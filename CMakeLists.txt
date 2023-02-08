@@ -9,14 +9,21 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets SerialBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets SerialBus)
+find_file(PCAN_LIB PCANBasic.dll PATHS lib)
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/include)
 
 set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        icons.qrc
+        connectcandialog.cpp
+        connectcandialog.h
+        connectcandialog.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
