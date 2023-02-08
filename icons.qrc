@@ -1,2 +1,12 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>icons/connect.png</file>
+        <file>icons/disconnect.png</file>
+        <file>icons/exit.png</file>
+        <file>icons/refresh.png</file>
+        <file>icons/run.png</file>
+        <file>icons/save.png</file>
+        <file>icons/stop.jpg</file>
+        <file>icons/open.jpg</file>
+    </qresource>
+</RCC>

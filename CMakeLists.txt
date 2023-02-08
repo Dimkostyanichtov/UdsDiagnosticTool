@@ -24,6 +24,9 @@ set(PROJECT_SOURCES
         connectcandialog.cpp
         connectcandialog.h
         connectcandialog.ui
+        servicefactory.cpp
+        servicefactory.h
+        udsservice.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
