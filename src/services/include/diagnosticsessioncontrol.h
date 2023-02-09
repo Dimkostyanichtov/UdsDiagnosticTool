@@ -1,17 +1,18 @@
 #ifndef DIAGNOSTICSESSIONCONTROL_H
 #define DIAGNOSTICSESSIONCONTROL_H
 
-#include <QLabel>
-#include <QComboBox>
-
 #include "udsservice.h"
 
 class diagnosticSessionControl : public udsService
 {
+private:
+    diagnosticSessionControl(const diagnosticSessionControl&);
+    diagnosticSessionControl& operator=(const diagnosticSessionControl&);
+
 public:
     diagnosticSessionControl();
-    virtual ~diagnosticSessionControl();
-    QByteArrayList *request() override;
+    virtual ~diagnosticSessionControl() {}
+    QList<int> *request() override;
 
 private:
     QLabel *sessionTypeLabel;

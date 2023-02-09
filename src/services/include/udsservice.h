@@ -3,16 +3,22 @@
 
 #include <QByteArrayList>
 #include <QWidget>
+#include <QLabel>
+#include <QComboBox>
+#include <QLineEdit>
+#include <QObject>
+#include <QRegExp>
 
-class udsService
+class udsService : public QObject
 {
+    Q_OBJECT
 protected:
     QList<QWidget*> widgets {};
 
 public:
     udsService() {}
     virtual ~udsService() {}
-    virtual QByteArrayList *request() = 0;
+    virtual QList<int> *request() = 0;
     QList<QWidget*> getWidgets() { return widgets; }
 };
 

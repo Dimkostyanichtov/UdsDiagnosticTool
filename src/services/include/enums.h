@@ -8,7 +8,7 @@ class Enums
 {
     Q_GADGET
 public:
-    enum class MessageTypes: int
+    enum MessageTypes: int
     {
         SINGLE = 0,
         FIRST = 1,
@@ -26,7 +26,7 @@ public:
     };
     Q_ENUM(SessionTypes);
 
-    enum class ServiceTypes: int
+    enum ServiceTypes: int
     {
         DiagnosticSessionControl = 0x10,
         ECUReset = 0x11,
@@ -56,7 +56,7 @@ public:
     };
     Q_ENUM(ServiceTypes);
 
-    enum class ServiceAnswers : int
+    enum ServiceAnswers : int
     {
         DiagnosticSessionControlAnswer = 0x50,
         ResetAnswer = 0x51,

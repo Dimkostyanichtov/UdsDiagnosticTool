@@ -5,8 +5,10 @@
 
 namespace udsNames {
 
-static QString dsc = QVariant::fromValue(Enums::ServiceTypes::DiagnosticSessionControl).toString();
-static QString cc = QVariant::fromValue(Enums::ServiceTypes::CommunicationControl).toString();
-static QString cdi = QVariant::fromValue(Enums::ServiceTypes::ClearDiagnosticInformation).toString();
+static const int answerSuppress = 0x80;
+
+static QString DiagnosticSessionControl = QVariant::fromValue(Enums::ServiceTypes::DiagnosticSessionControl).toString();
+static QString CommunicationControl = QVariant::fromValue(Enums::ServiceTypes::CommunicationControl).toString();
+static QString ClearDiagnosticInformation = QVariant::fromValue(Enums::ServiceTypes::ClearDiagnosticInformation).toString();
 
 }
