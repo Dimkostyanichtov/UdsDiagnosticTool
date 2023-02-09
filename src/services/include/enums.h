@@ -78,6 +78,7 @@ public:
     };
     Q_ENUM(ServiceAnswers);
 
+    Enums() = delete;
 };
 
 #endif // ENUMS_H

@@ -1,10 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include "src/services/include/servicefactory.h"
 #include "src/services/include/udsservices.h"
-
-using namespace udsNames;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -14,17 +11,29 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->menubar->hide();
 
+    QString DiagnosticSessionControl = enumToString(Enums::ServiceTypes::DiagnosticSessionControl);
+    QString CommunicationControl = enumToString(Enums::ServiceTypes::CommunicationControl);
+    QString ClearDiagnosticInformation = enumToString(Enums::ServiceTypes::ClearDiagnosticInformation);
+
     serviceFactory serviceCreator;
     serviceCreator.addService<diagnosticSessionControl>(DiagnosticSessionControl);
-    //serviceCreator.addService<communicationControl>(cc);
-    //serviceCreator.addService<clearDiagnosticInformation>(cdi);
+    serviceCreator.addService<communicationControl>(CommunicationControl);
+    serviceCreator.addService<clearDiagnosticInformation>(ClearDiagnosticInformation);
 
     services->insert(DiagnosticSessionControl, serviceCreator.create(DiagnosticSessionControl));
-    //services->insert(dsc, serviceCreator.create(cc));
-    //services->insert(dsc, serviceCreator.create(cdi));
+    services->insert(CommunicationControl, serviceCreator.create(CommunicationControl));
+    services->insert(ClearDiagnosticInformation, serviceCreator.create(ClearDiagnosticInformation));
+
+    ui->serviceComboBox->addItems(services->keys());
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_exit_triggered()
+{
+    close();
+}
+

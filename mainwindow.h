@@ -16,6 +16,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_exit_triggered();
+
 private:
     Ui::MainWindow *ui;
     QMap<QString, udsService*> *services;

@@ -42,6 +42,6 @@ QList<int>* communicationControl::request()
         break;
     }
     if (answerSuppressComboBox->currentIndex() == 1)
-        request[1] += udsNames::answerSuppress;
+        request[1] += udsConstants::answerSuppress;
     return request;
 }

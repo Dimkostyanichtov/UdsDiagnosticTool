@@ -2,13 +2,14 @@
 #include "diagnosticsessioncontrol.h"
 #include "communicationcontrol.h"
 #include "cleardiagnosticinformation.h"
+#include "servicefactory.h"
 
-namespace udsNames {
+template<typename T>
+QString enumToString(T val)
+{
+    return QVariant::fromValue(val).toString();
+}
 
-static const int answerSuppress = 0x80;
-
-static QString DiagnosticSessionControl = QVariant::fromValue(Enums::ServiceTypes::DiagnosticSessionControl).toString();
-static QString CommunicationControl = QVariant::fromValue(Enums::ServiceTypes::CommunicationControl).toString();
-static QString ClearDiagnosticInformation = QVariant::fromValue(Enums::ServiceTypes::ClearDiagnosticInformation).toString();
-
+namespace udsConstants {
+    static const int answerSuppress = 0x80;
 }

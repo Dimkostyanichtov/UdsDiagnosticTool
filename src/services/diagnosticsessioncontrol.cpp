@@ -26,6 +26,6 @@ QList<int>* diagnosticSessionControl::request()
     request->append(Enums::ServiceTypes::DiagnosticSessionControl);
     request->append(sessionTypeComboBox->currentIndex()+1);
     if (answerSuppressComboBox->currentIndex() == 1)
-        request[1] += udsNames::answerSuppress;
+        request[1] += udsConstants::answerSuppress;
     return request;
 }
