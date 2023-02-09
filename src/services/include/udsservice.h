@@ -6,10 +6,10 @@
 class udsService
 {
 public:
-    udsService() {};
-    virtual ~udsService() {};
+    udsService() {}
+    virtual ~udsService() {}
 
-    virtual QByteArrayList request() = 0;
+    virtual QByteArrayList *request() = 0;
 };
 
 #endif // UDSSERVICE_H

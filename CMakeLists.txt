@@ -14,6 +14,14 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets SerialBus)
 find_file(PCAN_LIB PCANBasic.dll PATHS lib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/services)
+
+file(GLOB cmd
+    "src/*"
+    "src/services/*"
+    "src/services/include/*"
+    "src/connection/include/*"
+)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -24,9 +32,6 @@ set(PROJECT_SOURCES
         connectcandialog.cpp
         connectcandialog.h
         connectcandialog.ui
-        servicefactory.cpp
-        servicefactory.h
-        udsservice.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -41,18 +46,18 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 else()
     if(ANDROID)
         add_library(UdsDiagnosticTool SHARED
-            ${PROJECT_SOURCES}
+            ${PROJECT_SOURCES} ${cmd}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:
 #    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
     else()
         add_executable(UdsDiagnosticTool
-            ${PROJECT_SOURCES}
+            ${PROJECT_SOURCES} ${cmd}
         )
     endif()
 endif()
 
-target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${PCAN_LIB})
 
 set_target_properties(UdsDiagnosticTool PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 
 #include "servicefactory.h"
+#include "diagnosticsessioncontrol.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,10 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->menubar->hide();
 
     serviceFactory services;
+    services.addService<diagnosticSessionControl>("diagnosticSessionControl");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
