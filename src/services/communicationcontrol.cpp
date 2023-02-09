@@ -1,6 +1,6 @@
 #include "include/communicationcontrol.h"
 
-communicationcontrol::communicationcontrol()
+communicationControl::communicationControl()
 {
 
 }

@@ -1,6 +1,6 @@
 #include "include/cleardiagnosticinformation.h"
 
-cleardiagnosticinformation::cleardiagnosticinformation()
+clearDiagnosticInformation::clearDiagnosticInformation()
 {
 
 }

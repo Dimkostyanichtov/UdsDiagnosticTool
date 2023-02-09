@@ -2,10 +2,10 @@
 #define COMMUNICATIONCONTROL_H
 
 
-class communicationcontrol
+class communicationControl
 {
 public:
-    communicationcontrol();
+    communicationControl();
 };
 
 #endif // COMMUNICATIONCONTROL_H

@@ -2,10 +2,10 @@
 #define CLEARDIAGNOSTICINFORMATION_H
 
 
-class cleardiagnosticinformation
+class clearDiagnosticInformation
 {
 public:
-    cleardiagnosticinformation();
+    clearDiagnosticInformation();
 };
 
 #endif // CLEARDIAGNOSTICINFORMATION_H

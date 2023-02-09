@@ -11,7 +11,6 @@ class serviceCreator
 public:
     serviceCreator() {}
     virtual ~serviceCreator() {}
-
     virtual udsService* createService() const = 0;
 };
 
@@ -21,26 +20,35 @@ class udsServiceCreator : public serviceCreator
 public :
     udsServiceCreator() {}
     virtual ~udsServiceCreator() {}
-
     udsService* createService() const override { return new C(); }
 };
 
 class serviceFactory
 {
 protected:
-    typedef QMap<std::string, serviceCreator*> ServiceMap;
+    typedef QMap<QString, serviceCreator*> ServiceMap;
     ServiceMap serviceMap;
+    typedef QMap<QString, serviceCreator*> RoutineMap;
+    ServiceMap routineMap;
 
 public:
     serviceFactory() {}
     virtual ~serviceFactory() {}
 
     template <class C>
-    void addService(const std::string& id) {
+    void addService(const QString& id)
+    {
         if (serviceMap.find(id) == serviceMap.end())
             serviceMap[id] = new udsServiceCreator<C>();
     }
 
+    udsService *create(const QString& id)
+    {
+        typename ServiceMap::iterator it = serviceMap.find(id);
+        if (it != serviceMap.end())
+            return it.value()->createService();
+        return 0;
+    }
 };
 
 #endif // SERVICEFACTORY_H
