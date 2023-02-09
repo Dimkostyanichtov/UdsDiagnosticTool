@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include "servicefactory.h"
-#include "diagnosticsessioncontrol.h"
+#include "src/services/include/servicefactory.h"
+#include "src/services/include/diagnosticsessioncontrol.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

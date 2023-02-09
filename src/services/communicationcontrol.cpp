@@ -1,4 +1,4 @@
-#include "communicationcontrol.h"
+#include "include/communicationcontrol.h"
 
 communicationcontrol::communicationcontrol()
 {

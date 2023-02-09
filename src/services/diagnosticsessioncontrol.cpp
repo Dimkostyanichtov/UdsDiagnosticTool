@@ -2,7 +2,7 @@
 
 diagnosticSessionControl::diagnosticSessionControl()
 {
-    dscLabel = new QLabel("Diagnostic session control");
+
 }
 
 diagnosticSessionControl::~diagnosticSessionControl() {}
