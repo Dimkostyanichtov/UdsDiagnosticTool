@@ -70,17 +70,48 @@
        <widget class="QComboBox" name="serviceComboBox">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>120</x>
           <y>20</y>
-          <width>111</width>
-          <height>22</height>
+          <width>150</width>
+          <height>20</height>
          </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>150</width>
+          <height>20</height>
+         </size>
         </property>
         <property name="font">
          <font>
           <family>Calibri</family>
           <pointsize>11</pointsize>
          </font>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>60</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Calibri</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Services:</string>
         </property>
        </widget>
       </widget>

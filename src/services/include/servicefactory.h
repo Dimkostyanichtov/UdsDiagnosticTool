@@ -1,9 +1,6 @@
 #ifndef SERVICEFACTORY_H
 #define SERVICEFACTORY_H
 
-#include <QString>
-#include <QMap>
-
 #include "udsservice.h"
 
 class serviceCreator

@@ -7,7 +7,13 @@
 template<typename T>
 QString enumToString(T val)
 {
-    return QVariant::fromValue(val).toString();
+    //QString str = QVariant::fromValue(val).toString();
+    QString res = "";//str.at(0);
+    //for (int i = 1; i < str.length(); ++i) {
+    //    if (str.at(i).isUpper())
+    //        res.append(" " + str.mid(i, 1).toLower());
+    //}
+    return res;
 }
 
 namespace udsConstants {

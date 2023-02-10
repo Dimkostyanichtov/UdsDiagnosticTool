@@ -6,6 +6,8 @@
 #include <QLabel>
 #include <QComboBox>
 #include <QLineEdit>
+#include <QString>
+#include <QMap>
 #include <QObject>
 #include <QRegExp>
 
@@ -16,10 +18,10 @@ protected:
     QList<QWidget*> widgets {};
 
 public:
-    udsService() {}
-    virtual ~udsService() {}
+    udsService();
+    virtual ~udsService();
     virtual QList<int> *request() = 0;
-    QList<QWidget*> getWidgets() { return widgets; }
+    QList<QWidget*> getWidgets();
 };
 
 #endif // UDSSERVICE_H

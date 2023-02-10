@@ -1,5 +1,5 @@
 #include "include/communicationcontrol.h"
-#include "include/udsservices.h"
+#include "include/udsconstants.h"
 
 communicationControl::communicationControl()
     : communicationIdLabel(new QLabel("Function ID:"))

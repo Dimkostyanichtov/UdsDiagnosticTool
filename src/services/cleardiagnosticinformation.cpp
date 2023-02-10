@@ -1,5 +1,5 @@
 #include "include/cleardiagnosticinformation.h"
-#include "include/udsservices.h"
+#include "include/udsconstants.h"
 
 clearDiagnosticInformation::clearDiagnosticInformation()
     : clearDiagnosticInfoLabel(new QLabel("Group of DTC to clear:"))

@@ -1,5 +1,5 @@
 #include "include/diagnosticsessioncontrol.h"
-#include "include/udsservices.h"
+#include "include/udsconstants.h"
 
 diagnosticSessionControl::diagnosticSessionControl()
     : sessionTypeLabel(new QLabel("Session type:"))
