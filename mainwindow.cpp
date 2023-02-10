@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
-#include "src/services/include/udsconstants.h"
+using service_types = Enums::ServiceTypes;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,9 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->menubar->hide();
 
-    QString DiagnosticSessionControl = enumToString(Enums::ServiceTypes::DiagnosticSessionControl);
-    QString CommunicationControl = enumToString(Enums::ServiceTypes::CommunicationControl);
-    QString ClearDiagnosticInformation = enumToString(Enums::ServiceTypes::ClearDiagnosticInformation);
+    QString DiagnosticSessionControl = enumToString(service_types::DiagnosticSessionControl);
+    QString CommunicationControl = enumToString(service_types::CommunicationControl);
+    QString ClearDiagnosticInformation = enumToString(service_types::ClearDiagnosticInformation);
 
     serviceFactory serviceCreator;
     serviceCreator.addService<diagnosticSessionControl>(DiagnosticSessionControl);
@@ -37,3 +37,10 @@ void MainWindow::on_exit_triggered()
     close();
 }
 
+
+void MainWindow::on_serviceComboBox_currentIndexChanged(int index)
+{
+    QList<QWidget*>* widgets = getCurrentWidgets(ui->serviceComboBox->currentText());
+    for (QWidget* w : *widgets)
+        ui->serviceVerticalLayout->addWidget(w);
+}

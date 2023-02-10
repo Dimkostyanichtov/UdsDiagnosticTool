@@ -8,6 +8,7 @@ class diagnosticSessionControl : public udsService
 private:
     diagnosticSessionControl(const diagnosticSessionControl&);
     diagnosticSessionControl& operator=(const diagnosticSessionControl&);
+    diagnosticSessionControl& operator=(diagnosticSessionControl&&);
 
 public:
     diagnosticSessionControl();

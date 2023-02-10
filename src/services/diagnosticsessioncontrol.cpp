@@ -1,5 +1,4 @@
 #include "include/diagnosticsessioncontrol.h"
-#include "include/udsconstants.h"
 
 diagnosticSessionControl::diagnosticSessionControl()
     : sessionTypeLabel(new QLabel("Session type:"))
@@ -7,6 +6,8 @@ diagnosticSessionControl::diagnosticSessionControl()
     , answerSuppressLabel(new QLabel("Answer:"))
     , answerSuppressComboBox(new QComboBox())
 {
+    widgets = new QList<QWidget*>;
+
     sessionTypeComboBox->addItem("Diagnostic session");
     sessionTypeComboBox->addItem("Programming session");
     sessionTypeComboBox->addItem("Extended session");
@@ -14,10 +15,10 @@ diagnosticSessionControl::diagnosticSessionControl()
     answerSuppressComboBox->addItem("To answer");
     answerSuppressComboBox->addItem("Don't answer");
 
-    widgets.append(sessionTypeLabel);
-    widgets.append(sessionTypeComboBox);
-    widgets.append(answerSuppressLabel);
-    widgets.append(answerSuppressComboBox);
+    widgets->append(sessionTypeLabel);
+    widgets->append(sessionTypeComboBox);
+    widgets->append(answerSuppressLabel);
+    widgets->append(answerSuppressComboBox);
 }
 
 QList<int>* diagnosticSessionControl::request()

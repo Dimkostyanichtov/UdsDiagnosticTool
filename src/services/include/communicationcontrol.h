@@ -5,10 +5,10 @@
 
 class communicationControl : public udsService
 {
-public:
 private:
     communicationControl(const communicationControl&);
     communicationControl& operator=(const communicationControl&);
+    communicationControl& operator=(communicationControl&&);
 
 public:
     communicationControl();

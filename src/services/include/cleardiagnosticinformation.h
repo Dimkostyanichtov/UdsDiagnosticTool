@@ -7,13 +7,15 @@
 
 class clearDiagnosticInformation : public udsService
 {
+    Q_OBJECT
 
 private:
     clearDiagnosticInformation(const clearDiagnosticInformation&);
     clearDiagnosticInformation& operator=(const clearDiagnosticInformation&);
+    clearDiagnosticInformation& operator=(clearDiagnosticInformation&&);
 
 public:
-    clearDiagnosticInformation();
+    clearDiagnosticInformation(QObject *parent = nullptr);
     virtual ~clearDiagnosticInformation() {}
     QList<int> *request() override;
 
@@ -22,7 +24,7 @@ private:
     QLineEdit *clearDiagnosticInfoLineEdit;
 
 public slots:
-    void onTextChanged(QString);
+    void onTextChanged(const QString &);
 };
 
 #endif // CLEARDIAGNOSTICINFORMATION_H
