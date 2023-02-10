@@ -18,10 +18,10 @@ protected:
     QList<QWidget*> widgets {};
 
 public:
-    udsService();
-    virtual ~udsService();
+    udsService() {}
+    virtual ~udsService() {}
     virtual QList<int> *request() = 0;
-    QList<QWidget*> getWidgets();
+    QList<QWidget*> getWidgets() { return widgets; }
 };
 
 #endif // UDSSERVICE_H
