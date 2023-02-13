@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QUrl>
+#include <QDesktopServices>
 
 using service_types = Enums::ServiceTypes;
 
@@ -49,3 +51,19 @@ void MainWindow::on_serviceComboBox_currentIndexChanged(int index)
     for (QWidget* w : *widgets)
         ui->serviceOptionsLayout->addWidget(w);
 }
+
+void MainWindow::on_linkPushButton_clicked()
+{
+    QDesktopServices::openUrl(QUrl("https://github.com/Dimkostyanichtov/UdsDiagnosticTool", QUrl::TolerantMode));
+}
+
+
+void MainWindow::on_run_triggered()
+{
+    for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
+            widget->setEnabled(false);
+
+    for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
+            widget->setEnabled(true);
+}
+

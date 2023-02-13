@@ -1,33 +1,6 @@
 #include "include/communicationcontrol.h"
 
-communicationControl::communicationControl()
-    : communicationIdLabel(new QLabel("Function ID:"))
-    , communicationIdComboBox(new QComboBox())
-    , communicationTypeLabel(new QLabel("Communication type:"))
-    , communicationTypeComboBox(new QComboBox())
-    , answerSuppressLabel(new QLabel("Answer:"))
-    , answerSuppressComboBox(new QComboBox())
-{
-    widgets = new QList<QWidget*>;
-
-    communicationIdComboBox->addItem("Enable Rx and Tx");
-    communicationIdComboBox->addItem("Enable Rx and disable Tx");
-    communicationIdComboBox->addItem("Disable Rx and enable Tx");
-    communicationIdComboBox->addItem("Disable Rx and Tx");
-
-    communicationTypeComboBox->addItem("Normal communication messages");
-    communicationTypeComboBox->addItem("Normal and Network management communication messages");
-
-    answerSuppressComboBox->addItem("To answer");
-    answerSuppressComboBox->addItem("Don't answer");
-
-    widgets->append(communicationIdLabel);
-    widgets->append(communicationIdComboBox);
-    widgets->append(communicationTypeLabel);
-    widgets->append(communicationTypeComboBox);
-    widgets->append(answerSuppressLabel);
-    widgets->append(answerSuppressComboBox);
-}
+communicationControl::communicationControl() {}
 
 QList<int>* communicationControl::request()
 {
@@ -49,6 +22,41 @@ QList<int>* communicationControl::request()
 
 QList<QWidget *> *communicationControl::getWidgets()
 {
+    communicationIdLabel = new QLabel("Function ID:");
+    communicationIdComboBox = new QComboBox();
+    communicationTypeLabel = new QLabel("Communication type:");
+    communicationTypeComboBox = new QComboBox();
+    answerSuppressLabel = new QLabel("Answer:");
+    answerSuppressComboBox = new QComboBox();
+
     widgets = new QList<QWidget*>;
+
+    communicationIdLabel->setContentsMargins(0, 6, 0, 3);
+
+    communicationIdComboBox->addItem("Enable Rx and Tx");
+    communicationIdComboBox->addItem("Enable Rx and disable Tx");
+    communicationIdComboBox->addItem("Disable Rx and enable Tx");
+    communicationIdComboBox->addItem("Disable Rx and Tx");
+    communicationIdComboBox->setMaximumWidth(150);
+
+    communicationTypeLabel->setContentsMargins(0, 6, 0, 3);
+
+    communicationTypeComboBox->addItem("Normal communication messages");
+    communicationTypeComboBox->addItem("Normal and Network management communication messages");
+    communicationTypeComboBox->setMaximumWidth(315);
+
+    answerSuppressLabel->setContentsMargins(0, 6, 0, 3);
+
+    answerSuppressComboBox->addItem("To answer");
+    answerSuppressComboBox->addItem("Don't answer");
+    answerSuppressComboBox->setMaximumWidth(90);
+
+    widgets->append(communicationIdLabel);
+    widgets->append(communicationIdComboBox);
+    widgets->append(communicationTypeLabel);
+    widgets->append(communicationTypeComboBox);
+    widgets->append(answerSuppressLabel);
+    widgets->append(answerSuppressComboBox);
+
     return widgets;
 }

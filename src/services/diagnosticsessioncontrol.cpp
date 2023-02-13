@@ -1,25 +1,6 @@
 #include "include/diagnosticsessioncontrol.h"
 
-diagnosticSessionControl::diagnosticSessionControl()
-    : sessionTypeLabel(new QLabel("Session type:"))
-    , sessionTypeComboBox(new QComboBox())
-    , answerSuppressLabel(new QLabel("Answer:"))
-    , answerSuppressComboBox(new QComboBox())
-{
-    widgets = new QList<QWidget*>;
-
-    sessionTypeComboBox->addItem("Diagnostic session");
-    sessionTypeComboBox->addItem("Programming session");
-    sessionTypeComboBox->addItem("Extended session");
-
-    answerSuppressComboBox->addItem("To answer");
-    answerSuppressComboBox->addItem("Don't answer");
-
-    widgets->append(sessionTypeLabel);
-    widgets->append(sessionTypeComboBox);
-    widgets->append(answerSuppressLabel);
-    widgets->append(answerSuppressComboBox);
-}
+diagnosticSessionControl::diagnosticSessionControl() {}
 
 QList<int>* diagnosticSessionControl::request()
 {
@@ -33,6 +14,29 @@ QList<int>* diagnosticSessionControl::request()
 
 QList<QWidget *> *diagnosticSessionControl::getWidgets()
 {
+    sessionTypeLabel = new QLabel("Session type:");
+    sessionTypeComboBox = new QComboBox();
+    answerSuppressLabel = new QLabel("Answer:");
+    answerSuppressComboBox = new QComboBox();
+
     widgets = new QList<QWidget*>;
+
+    sessionTypeLabel->setContentsMargins(0, 6, 0, 3);
+
+    sessionTypeComboBox->addItem("Diagnostic session");
+    sessionTypeComboBox->addItem("Programming session");
+    sessionTypeComboBox->addItem("Extended session");
+    sessionTypeComboBox->setMaximumWidth(130);
+
+    answerSuppressLabel->setContentsMargins(0, 6, 0, 3);
+
+    answerSuppressComboBox->addItem("To answer");
+    answerSuppressComboBox->addItem("Don't answer");
+    answerSuppressComboBox->setMaximumWidth(90);
+
+    widgets->append(sessionTypeLabel);
+    widgets->append(sessionTypeComboBox);
+    widgets->append(answerSuppressLabel);
+    widgets->append(answerSuppressComboBox);
     return widgets;
 }

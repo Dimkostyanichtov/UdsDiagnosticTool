@@ -10,5 +10,6 @@
         <file>icons/open.jpg</file>
         <file>icons/index.png</file>
         <file>icons/tools.png</file>
+        <file>icons/link.png</file>
     </qresource>
 </RCC>

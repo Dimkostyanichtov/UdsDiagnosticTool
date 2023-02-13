@@ -29,153 +29,198 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <layout class="QVBoxLayout" name="verticalLayout_4">
+     <layout class="QVBoxLayout" name="centralLayout">
       <property name="spacing">
        <number>0</number>
       </property>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <layout class="QHBoxLayout" name="mainLayout">
         <property name="spacing">
          <number>0</number>
         </property>
         <item>
-         <layout class="QVBoxLayout" name="serviceLayout">
+         <layout class="QVBoxLayout" name="verticalLayout_6">
           <property name="spacing">
            <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>6</number>
+           <number>3</number>
           </property>
           <item>
-           <layout class="QHBoxLayout" name="serviceSelectLayout">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="serviceLabel">
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>40</width>
-                <height>30</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Calibri</family>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Services:</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="serviceComboBox">
-              <property name="minimumSize">
-               <size>
-                <width>200</width>
-                <height>25</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>200</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Calibri</family>
-                <pointsize>11</pointsize>
-               </font>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>10</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="serviceOptionsLabel">
+           <widget class="QTabWidget" name="optionsTabWidget">
             <property name="font">
              <font>
               <family>Calibri</family>
-              <pointsize>12</pointsize>
+              <pointsize>11</pointsize>
              </font>
             </property>
-            <property name="text">
-             <string>options</string>
+            <property name="currentIndex">
+             <number>0</number>
             </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
+            <widget class="QWidget" name="serviceOptionsTab">
+             <attribute name="title">
+              <string>Service options</string>
+             </attribute>
+             <widget class="QWidget" name="">
+              <property name="geometry">
+               <rect>
+                <x>8</x>
+                <y>10</y>
+                <width>314</width>
+                <height>401</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="serviceManagementLayout">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <property name="rightMargin">
+                <number>0</number>
+               </property>
+               <item>
+                <layout class="QHBoxLayout" name="serviceSelectLayout">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="serviceLabel">
+                   <property name="minimumSize">
+                    <size>
+                     <width>60</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>40</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Services:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="serviceComboBox">
+                   <property name="minimumSize">
+                    <size>
+                     <width>200</width>
+                     <height>25</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="serviceNameLayout">
+                 <item>
+                  <spacer name="verticalSpacer_3">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Minimum</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>10</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="serviceOptionsLabel">
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>12</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>options</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="verticalSpacer_4">
+                   <property name="orientation">
+                    <enum>Qt::Vertical</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Minimum</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>20</width>
+                     <height>10</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="serviceOptionsLayout"/>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_2">
+                 <property name="orientation">
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+            <widget class="QWidget" name="performanceOptionsTab">
+             <attribute name="title">
+              <string>Performance options</string>
+             </attribute>
+            </widget>
            </widget>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_4">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>10</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="serviceOptionsLayout"/>
-          </item>
-          <item>
-           <spacer name="verticalSpacer_2">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
           </item>
           <item>
            <layout class="QHBoxLayout" name="serviceAddLayout">
@@ -199,11 +244,11 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="addServicePushButton">
               <property name="minimumSize">
                <size>
                 <width>110</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
               <property name="font">
@@ -214,6 +259,9 @@
               </property>
               <property name="text">
                <string>Add service</string>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
               </property>
              </widget>
             </item>
@@ -234,11 +282,11 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="deleteServicePushButton">
               <property name="minimumSize">
                <size>
                 <width>110</width>
-                <height>50</height>
+                <height>40</height>
                </size>
               </property>
               <property name="font">
@@ -273,7 +321,7 @@
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QVBoxLayout" name="serviceListLayout">
           <property name="spacing">
            <number>0</number>
           </property>
@@ -281,7 +329,7 @@
            <number>6</number>
           </property>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
+           <layout class="QHBoxLayout" name="cleanServiceListLayout">
             <property name="spacing">
              <number>0</number>
             </property>
@@ -299,7 +347,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="clearServiceListPushButton">
               <property name="font">
                <font>
                 <family>Calibri</family>
@@ -314,7 +362,7 @@
            </layout>
           </item>
           <item>
-           <widget class="QTableView" name="tableView">
+           <widget class="QTableView" name="serviceTableView">
             <property name="font">
              <font>
               <family>Calibri</family>
@@ -323,18 +371,57 @@
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <layout class="QVBoxLayout" name="resultsLayout">
           <property name="spacing">
            <number>0</number>
           </property>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <layout class="QHBoxLayout" name="resultsManagementLayout">
             <property name="spacing">
              <number>0</number>
             </property>
+            <item>
+             <widget class="QPushButton" name="linkPushButton">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="icons.qrc">
+                <normaloff>:/icons/link.png</normaloff>:/icons/link.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>20</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
             <item>
              <spacer name="horizontalSpacer_6">
               <property name="orientation">
@@ -349,7 +436,7 @@
              </spacer>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_4">
+             <widget class="QPushButton" name="cleanResultsPushButton">
               <property name="font">
                <font>
                 <family>Calibri</family>
@@ -362,7 +449,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="logResultsPushButtonLog">
               <property name="font">
                <font>
                 <family>Calibri</family>
@@ -421,49 +508,23 @@
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="verticalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
-        </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>6</number>
-        </property>
-        <item>
-         <spacer name="horizontalSpacer_7">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="maximumSize">
-           <size>
-            <width>30</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="pixmap">
-           <pixmap resource="icons.qrc">:/icons/index.png</pixmap>
-          </property>
-          <property name="scaledContents">
-           <bool>true</bool>
-          </property>
-         </widget>
         </item>
        </layout>
       </item>
@@ -504,7 +565,6 @@
     <property name="title">
      <string>Options</string>
     </property>
-    <addaction name="actionOptions"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuDiagnostics"/>
@@ -545,7 +605,7 @@
    <addaction name="separator"/>
    <addaction name="connectSerialBus"/>
    <addaction name="separator"/>
-   <addaction name="actionOptions"/>
+   <addaction name="options"/>
    <addaction name="separator"/>
    <addaction name="exit"/>
    <addaction name="separator"/>
@@ -610,7 +670,7 @@
     <string>Ctrl+C</string>
    </property>
   </action>
-  <action name="actionOptions">
+  <action name="options">
    <property name="icon">
     <iconset resource="icons.qrc">
      <normaloff>:/icons/tools.png</normaloff>:/icons/tools.png</iconset>

@@ -11,13 +11,15 @@ QList<int> *clearDiagnosticInformation::request()
 
 QList<QWidget *> *clearDiagnosticInformation::getWidgets()
 {
-    widgets = new QList<QWidget*>;
     clearDiagnosticInfoLabel = new QLabel("Group of DTC to clear:");
     clearDiagnosticInfoLineEdit = new QLineEdit("FFFFFF");
 
+    widgets = new QList<QWidget*>;
+
+    clearDiagnosticInfoLabel->setContentsMargins(0, 6, 0, 3);
+
     clearDiagnosticInfoLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9a-fA-F]{0,6}")));
     clearDiagnosticInfoLineEdit->setMaximumWidth(50);
-    clearDiagnosticInfoLineEdit->setContentsMargins(0, 6, 0, 0);
     QObject::connect(clearDiagnosticInfoLineEdit, &QLineEdit::textChanged, this, &clearDiagnosticInformation::onTextChanged);
 
     widgets->append(clearDiagnosticInfoLabel);

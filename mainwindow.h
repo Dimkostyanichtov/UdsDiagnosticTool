@@ -27,6 +27,10 @@ private slots:
 
     void on_serviceComboBox_currentIndexChanged(int index);
 
+    void on_linkPushButton_clicked();
+
+    void on_run_triggered();
+
 private:
     Ui::MainWindow *ui;
     QMap<QString, udsService*> *services;
