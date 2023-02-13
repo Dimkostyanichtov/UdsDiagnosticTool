@@ -14,6 +14,7 @@ public:
     diagnosticSessionControl();
     virtual ~diagnosticSessionControl() {}
     QList<int> *request() override;
+    QList<QWidget*>* getWidgets() override;
 
 private:
     QLabel *sessionTypeLabel;

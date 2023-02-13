@@ -14,6 +14,7 @@ public:
     communicationControl();
     virtual ~communicationControl() {}
     QList<int> *request() override;
+    QList<QWidget*>* getWidgets() override;
 
 private:
     QLabel *communicationIdLabel;

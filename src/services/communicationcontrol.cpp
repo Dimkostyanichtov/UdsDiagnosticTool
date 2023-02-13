@@ -46,3 +46,9 @@ QList<int>* communicationControl::request()
         request[1] += udsConstants::answerSuppress;
     return request;
 }
+
+QList<QWidget *> *communicationControl::getWidgets()
+{
+    widgets = new QList<QWidget*>;
+    return widgets;
+}

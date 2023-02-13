@@ -24,7 +24,7 @@ public:
     udsService() {}
     virtual ~udsService() { delete[] widgets; }
     virtual QList<int> *request() = 0;
-    QList<QWidget*>* getWidgets() { return widgets; }
+    virtual QList<QWidget*>* getWidgets() = 0;
 };
 
 #endif // UDSSERVICE_H

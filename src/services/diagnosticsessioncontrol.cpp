@@ -30,3 +30,9 @@ QList<int>* diagnosticSessionControl::request()
         request[1] += udsConstants::answerSuppress;
     return request;
 }
+
+QList<QWidget *> *diagnosticSessionControl::getWidgets()
+{
+    widgets = new QList<QWidget*>;
+    return widgets;
+}

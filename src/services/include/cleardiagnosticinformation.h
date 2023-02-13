@@ -18,6 +18,7 @@ public:
     clearDiagnosticInformation(QObject *parent = nullptr);
     virtual ~clearDiagnosticInformation() {}
     QList<int> *request() override;
+    QList<QWidget*>* getWidgets() override;
 
 private:
     QLabel *clearDiagnosticInfoLabel;

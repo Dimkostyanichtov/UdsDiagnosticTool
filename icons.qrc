@@ -9,5 +9,6 @@
         <file>icons/stop.jpg</file>
         <file>icons/open.jpg</file>
         <file>icons/index.png</file>
+        <file>icons/tools.png</file>
     </qresource>
 </RCC>

@@ -40,7 +40,12 @@ void MainWindow::on_exit_triggered()
 
 void MainWindow::on_serviceComboBox_currentIndexChanged(int index)
 {
+    while (QLayoutItem* item = ui->serviceOptionsLayout->layout()->takeAt(0)) {
+        delete item->widget();
+        delete item;
+    }
+    ui->serviceOptionsLabel->setText(ui->serviceComboBox->currentText() + " options");
     QList<QWidget*>* widgets = getCurrentWidgets(ui->serviceComboBox->currentText());
     for (QWidget* w : *widgets)
-        ui->serviceVerticalLayout->addWidget(w);
+        ui->serviceOptionsLayout->addWidget(w);
 }
