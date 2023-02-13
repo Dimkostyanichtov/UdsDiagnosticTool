@@ -28,6 +28,9 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <property name="bottomMargin">
+     <number>3</number>
+    </property>
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="centralLayout">
       <property name="spacing">
@@ -44,7 +47,7 @@
            <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>3</number>
+           <number>6</number>
           </property>
           <item>
            <widget class="QTabWidget" name="optionsTabWidget">
@@ -61,7 +64,7 @@
              <attribute name="title">
               <string>Service options</string>
              </attribute>
-             <widget class="QWidget" name="">
+             <widget class="QWidget" name="layoutWidget">
               <property name="geometry">
                <rect>
                 <x>8</x>
@@ -157,7 +160,7 @@
                    <property name="sizeHint" stdset="0">
                     <size>
                      <width>20</width>
-                     <height>10</height>
+                     <height>15</height>
                     </size>
                    </property>
                   </spacer>
@@ -219,6 +222,192 @@
              <attribute name="title">
               <string>Performance options</string>
              </attribute>
+             <widget class="QWidget" name="">
+              <property name="geometry">
+               <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>311</width>
+                <height>96</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="additionaOptionsLayout">
+               <item>
+                <layout class="QHBoxLayout" name="securityLayout">
+                 <item>
+                  <widget class="QLabel" name="securityTypeLabel">
+                   <property name="minimumSize">
+                    <size>
+                     <width>90</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>90</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Security type:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="securityTypeComboBox">
+                   <property name="maximumSize">
+                    <size>
+                     <width>100</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_9">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="delayLayout">
+                 <item>
+                  <widget class="QPushButton" name="delayPushButton">
+                   <property name="minimumSize">
+                    <size>
+                     <width>90</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>90</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Delay:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="delaySpinBox">
+                   <property name="maximumSize">
+                    <size>
+                     <width>40</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_8">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="restartLayout">
+                 <item>
+                  <widget class="QPushButton" name="restartPushButton">
+                   <property name="minimumSize">
+                    <size>
+                     <width>90</width>
+                     <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>90</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Restart time:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QSpinBox" name="restartSpinBox">
+                   <property name="maximumSize">
+                    <size>
+                     <width>40</width>
+                     <height>16777215</height>
+                    </size>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>11</pointsize>
+                    </font>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_7">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
             </widget>
            </widget>
           </item>
@@ -226,6 +415,9 @@
            <layout class="QHBoxLayout" name="serviceAddLayout">
             <property name="spacing">
              <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>3</number>
             </property>
             <item>
              <spacer name="horizontalSpacer_2">
@@ -256,6 +448,11 @@
                 <family>Calibri</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: LightGray;
+border: 1px solid #555;
+border-radius: 5px;</string>
               </property>
               <property name="text">
                <string>Add service</string>
@@ -294,6 +491,11 @@
                 <family>Calibri</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: LightGray;
+border: 1px solid #555;
+border-radius: 5px;</string>
               </property>
               <property name="text">
                <string>Delete service</string>
@@ -348,11 +550,22 @@
             </item>
             <item>
              <widget class="QPushButton" name="clearServiceListPushButton">
+              <property name="minimumSize">
+               <size>
+                <width>75</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="font">
                <font>
                 <family>Calibri</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: LightGray;
+border: 1px solid #555;
+border-radius: 5px;</string>
               </property>
               <property name="text">
                <string>Clean</string>
@@ -382,7 +595,7 @@
             <property name="sizeHint" stdset="0">
              <size>
               <width>20</width>
-              <height>40</height>
+              <height>43</height>
              </size>
             </property>
            </spacer>
@@ -410,8 +623,8 @@
               </property>
               <property name="iconSize">
                <size>
-                <width>20</width>
-                <height>20</height>
+                <width>16</width>
+                <height>16</height>
                </size>
               </property>
               <property name="autoDefault">
@@ -437,11 +650,22 @@
             </item>
             <item>
              <widget class="QPushButton" name="cleanResultsPushButton">
+              <property name="minimumSize">
+               <size>
+                <width>75</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="font">
                <font>
                 <family>Calibri</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: LightGray;
+border: 1px solid #555;
+border-radius: 5px;</string>
               </property>
               <property name="text">
                <string>Clean</string>
@@ -450,11 +674,22 @@
             </item>
             <item>
              <widget class="QPushButton" name="logResultsPushButtonLog">
+              <property name="minimumSize">
+               <size>
+                <width>75</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="font">
                <font>
                 <family>Calibri</family>
                 <pointsize>11</pointsize>
                </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: LightGray;
+border: 1px solid #555;
+border-radius: 5px;</string>
               </property>
               <property name="text">
                <string>Log</string>
@@ -494,7 +729,7 @@
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>15</height>
+              <height>18</height>
              </size>
             </property>
             <property name="font">
@@ -503,8 +738,15 @@
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: LightGray;
+border: 1px solid #555;</string>
+            </property>
             <property name="value">
              <number>0</number>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -571,7 +813,13 @@
    <addaction name="menuOptions"/>
    <addaction name="menuCAN_bus"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="statusbar">
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+    </font>
+   </property>
+  </widget>
   <widget class="QToolBar" name="toolBar">
    <property name="minimumSize">
     <size>

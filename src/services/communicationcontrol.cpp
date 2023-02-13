@@ -32,24 +32,30 @@ QList<QWidget *> *communicationControl::getWidgets()
     widgets = new QList<QWidget*>;
 
     communicationIdLabel->setContentsMargins(0, 6, 0, 3);
+    communicationIdLabel->setFont(QFont("Calibri", 11));
 
     communicationIdComboBox->addItem("Enable Rx and Tx");
     communicationIdComboBox->addItem("Enable Rx and disable Tx");
     communicationIdComboBox->addItem("Disable Rx and enable Tx");
     communicationIdComboBox->addItem("Disable Rx and Tx");
-    communicationIdComboBox->setMaximumWidth(150);
+    communicationIdComboBox->setMaximumWidth(160);
+    communicationIdComboBox->setFont(QFont("Calibri", 11));
 
     communicationTypeLabel->setContentsMargins(0, 6, 0, 3);
+    communicationTypeLabel->setFont(QFont("Calibri", 11));
 
     communicationTypeComboBox->addItem("Normal communication messages");
-    communicationTypeComboBox->addItem("Normal and Network management communication messages");
-    communicationTypeComboBox->setMaximumWidth(315);
+    communicationTypeComboBox->addItem("Normal and Network management messages");
+    communicationTypeComboBox->setMaximumWidth(310);
+    communicationTypeComboBox->setFont(QFont("Calibri", 11));
 
     answerSuppressLabel->setContentsMargins(0, 6, 0, 3);
+    answerSuppressLabel->setFont(QFont("Calibri", 11));
 
     answerSuppressComboBox->addItem("To answer");
     answerSuppressComboBox->addItem("Don't answer");
-    answerSuppressComboBox->setMaximumWidth(90);
+    answerSuppressComboBox->setMaximumWidth(110);
+    answerSuppressComboBox->setFont(QFont("Calibri", 11));
 
     widgets->append(communicationIdLabel);
     widgets->append(communicationIdComboBox);

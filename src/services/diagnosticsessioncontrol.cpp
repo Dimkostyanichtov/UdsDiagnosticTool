@@ -22,17 +22,21 @@ QList<QWidget *> *diagnosticSessionControl::getWidgets()
     widgets = new QList<QWidget*>;
 
     sessionTypeLabel->setContentsMargins(0, 6, 0, 3);
+    sessionTypeLabel->setFont(QFont("Calibri", 11));
 
     sessionTypeComboBox->addItem("Diagnostic session");
     sessionTypeComboBox->addItem("Programming session");
     sessionTypeComboBox->addItem("Extended session");
-    sessionTypeComboBox->setMaximumWidth(130);
+    sessionTypeComboBox->setMaximumWidth(160);
+    sessionTypeComboBox->setFont(QFont("Calibri", 11));
 
     answerSuppressLabel->setContentsMargins(0, 6, 0, 3);
+    answerSuppressLabel->setFont(QFont("Calibri", 11));
 
     answerSuppressComboBox->addItem("To answer");
     answerSuppressComboBox->addItem("Don't answer");
-    answerSuppressComboBox->setMaximumWidth(90);
+    answerSuppressComboBox->setMaximumWidth(110);
+    answerSuppressComboBox->setFont(QFont("Calibri", 11));
 
     widgets->append(sessionTypeLabel);
     widgets->append(sessionTypeComboBox);

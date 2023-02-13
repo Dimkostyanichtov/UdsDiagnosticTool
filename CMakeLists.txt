@@ -32,6 +32,8 @@ set(PROJECT_SOURCES
         connectcandialog.cpp
         connectcandialog.h
         connectcandialog.ui
+        sequence.cpp
+        sequence.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -36,6 +36,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_exit_triggered()
 {
+    delete services;
     close();
 }
 
