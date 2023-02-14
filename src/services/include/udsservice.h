@@ -25,6 +25,16 @@ public:
     virtual ~udsService() { delete[] widgets; }
     virtual QList<int> *request() = 0;
     virtual QList<QWidget*>* getWidgets() = 0;
+
+    static QString listToString(const QList<int> list)
+    {
+        QString result;
+        for (int val : list)
+        {
+            result.append(QString("%1").arg(val, 2, 16));
+        }
+        return result;
+    }
 };
 
 #endif // UDSSERVICE_H

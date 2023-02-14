@@ -222,7 +222,7 @@
              <attribute name="title">
               <string>Performance options</string>
              </attribute>
-             <widget class="QWidget" name="">
+             <widget class="QWidget" name="layoutWidget">
               <property name="geometry">
                <rect>
                 <x>10</x>
@@ -293,7 +293,7 @@
                <item>
                 <layout class="QHBoxLayout" name="delayLayout">
                  <item>
-                  <widget class="QPushButton" name="delayPushButton">
+                  <widget class="QLabel" name="delayLabel">
                    <property name="minimumSize">
                     <size>
                      <width>90</width>
@@ -351,7 +351,7 @@
                <item>
                 <layout class="QHBoxLayout" name="restartLayout">
                  <item>
-                  <widget class="QPushButton" name="restartPushButton">
+                  <widget class="QLabel" name="restartTimeLabel">
                    <property name="minimumSize">
                     <size>
                      <width>90</width>
@@ -456,6 +456,9 @@ border-radius: 5px;</string>
               </property>
               <property name="text">
                <string>Add service</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
               </property>
               <property name="flat">
                <bool>false</bool>
@@ -582,6 +585,30 @@ border-radius: 5px;</string>
               <pointsize>11</pointsize>
              </font>
             </property>
+            <property name="frameShadow">
+             <enum>QFrame::Sunken</enum>
+            </property>
+            <property name="lineWidth">
+             <number>2</number>
+            </property>
+            <property name="midLineWidth">
+             <number>2</number>
+            </property>
+            <attribute name="horizontalHeaderCascadingSectionResizes">
+             <bool>false</bool>
+            </attribute>
+            <attribute name="horizontalHeaderMinimumSectionSize">
+             <number>150</number>
+            </attribute>
+            <attribute name="horizontalHeaderDefaultSectionSize">
+             <number>150</number>
+            </attribute>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderStretchLastSection">
+             <bool>false</bool>
+            </attribute>
            </widget>
           </item>
           <item>

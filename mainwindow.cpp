@@ -9,9 +9,13 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , services(new QMap<QString, udsService*>)
+    , sequence(new Sequence(this))
 {
     ui->setupUi(this);
     ui->menubar->hide();
+    ui->serviceTableView->horizontalHeader()->sectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
+    ui->serviceTableView->horizontalHeader()->setFont(QFont("Calibri", 14));
+    ui->serviceTableView->setModel(sequence);
 
     QString DiagnosticSessionControl = enumToString(service_types::DiagnosticSessionControl);
     QString CommunicationControl = enumToString(service_types::CommunicationControl);
@@ -40,7 +44,6 @@ void MainWindow::on_exit_triggered()
     close();
 }
 
-
 void MainWindow::on_serviceComboBox_currentIndexChanged(int index)
 {
     while (QLayoutItem* item = ui->serviceOptionsLayout->layout()->takeAt(0)) {
@@ -58,7 +61,6 @@ void MainWindow::on_linkPushButton_clicked()
     QDesktopServices::openUrl(QUrl("https://github.com/Dimkostyanichtov/UdsDiagnosticTool", QUrl::TolerantMode));
 }
 
-
 void MainWindow::on_run_triggered()
 {
     for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
@@ -66,5 +68,20 @@ void MainWindow::on_run_triggered()
 
     for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
             widget->setEnabled(true);
+}
+
+void MainWindow::on_addServicePushButton_clicked()
+{
+    udsService* currentService = *(services->find(ui->serviceComboBox->currentText()));
+    serviceModel service(ui->serviceComboBox->currentText(), udsService::listToString(*currentService->request()));
+    sequence->addService(service);
+}
+
+
+void MainWindow::on_deleteServicePushButton_clicked()
+{
+   QModelIndex index = ui->serviceTableView->selectionModel()->currentIndex();
+   if (index.isValid())
+       sequence->deleteService(index);
 }
 

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "src/services/include/uds.h"
+#include "sequence.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,9 +32,14 @@ private slots:
 
     void on_run_triggered();
 
+    void on_addServicePushButton_clicked();
+
+    void on_deleteServicePushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMap<QString, udsService*> *services;
+    Sequence *sequence;
 };
 
 #endif // MAINWINDOW_H

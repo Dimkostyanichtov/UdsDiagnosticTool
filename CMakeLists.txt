@@ -34,6 +34,8 @@ set(PROJECT_SOURCES
         connectcandialog.ui
         sequence.cpp
         sequence.h
+        servicemodel.cpp
+        servicemodel.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -59,7 +61,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${PCAN_LIB})
+target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SerialBus ${PCAN_LIB})
 
 set_target_properties(UdsDiagnosticTool PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
