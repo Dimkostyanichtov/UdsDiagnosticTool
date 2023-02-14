@@ -51,6 +51,13 @@ void Sequence::addService(serviceModel &newService)
     endInsertRows();
 }
 
+void Sequence::insertService(serviceModel &newService, int index)
+{
+    beginInsertRows(QModelIndex(), services->size(), services->size());
+    services->insert(index, newService);
+    endInsertRows();
+}
+
 void Sequence::deleteService(const QModelIndex &index)
 {
     beginRemoveRows(QModelIndex(), index.row(), index.row());

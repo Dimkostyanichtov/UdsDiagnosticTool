@@ -3,6 +3,8 @@
 #include <QUrl>
 #include <QDesktopServices>
 
+#include "connectcandialog.h"
+
 using service_types = Enums::ServiceTypes;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -36,6 +38,22 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::setConnected(bool connected)
+{
+
+}
+
+bool MainWindow::connected() const
+{
+    return true;
+}
+
+QList<QWidget *> *MainWindow::getCurrentWidgets(QString name)
+{
+    udsService* service = services->value(name);
+    return service->getWidgets();
 }
 
 void MainWindow::on_exit_triggered()
@@ -74,7 +92,11 @@ void MainWindow::on_addServicePushButton_clicked()
 {
     udsService* currentService = *(services->find(ui->serviceComboBox->currentText()));
     serviceModel service(ui->serviceComboBox->currentText(), udsService::listToString(*currentService->request()));
-    sequence->addService(service);
+    QModelIndex index = ui->serviceTableView->selectionModel()->currentIndex();
+    if (index.isValid())
+        sequence->insertService(service, index.row() + 1);
+    else
+        sequence->addService(service);
 }
 
 
@@ -83,5 +105,21 @@ void MainWindow::on_deleteServicePushButton_clicked()
    QModelIndex index = ui->serviceTableView->selectionModel()->currentIndex();
    if (index.isValid())
        sequence->deleteService(index);
+   else
+   {
+       if (sequence->rowCount() != 0)
+       {
+           index = ui->serviceTableView->selectionModel()->model()->index(ui->serviceTableView->model()->rowCount() - 1, 0);
+           sequence->deleteService(index);
+       }
+   }
+}
+
+
+void MainWindow::on_connectSerialBus_triggered()
+{
+    connectCanDialog* candialog = new connectCanDialog();
+    candialog->setWindowFlags(candialog->windowFlags() & (~Qt::WindowContextHelpButtonHint));
+    candialog->show();
 }
 

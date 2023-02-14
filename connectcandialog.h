@@ -4,19 +4,26 @@
 #include <QDialog>
 
 namespace Ui {
-class connectcandialog;
+class connectCanDialog;
 }
 
-class connectcandialog : public QDialog
+class connectCanDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit connectcandialog(QWidget *parent = nullptr);
-    ~connectcandialog();
+    explicit connectCanDialog(QWidget *parent = nullptr);
+    ~connectCanDialog();
 
 private:
-    Ui::connectcandialog *ui;
+    Ui::connectCanDialog *ui;
+
+    //enum Drivers {
+    //    ""
+    //};
+
+public slots:
+    void onUpdate();
 };
 
 #endif // CONNECTCANDIALOG_H

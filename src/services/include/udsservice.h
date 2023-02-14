@@ -28,12 +28,10 @@ public:
 
     static QString listToString(const QList<int> list)
     {
-        QString result;
+        QStringList result;
         for (int val : list)
-        {
-            result.append(QString("%1").arg(val, 2, 16));
-        }
-        return result;
+            result.append(QString::number(val, 16).rightJustified(2, '0'));
+        return result.join('-');
     }
 };
 

@@ -12,16 +12,16 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    Q_PROPERTY(bool connected READ connected WRITE setConnected)
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    QList<QWidget*>* getCurrentWidgets(QString name)
-    {
-        udsService* service = services->value(name);
-        return service->getWidgets();
-    }
+    void setConnected(bool connected);
+    bool connected() const;
+
+    QList<QWidget*>* getCurrentWidgets(QString);
 
 private slots:
     void on_exit_triggered();
@@ -35,6 +35,8 @@ private slots:
     void on_addServicePushButton_clicked();
 
     void on_deleteServicePushButton_clicked();
+
+    void on_connectSerialBus_triggered();
 
 private:
     Ui::MainWindow *ui;

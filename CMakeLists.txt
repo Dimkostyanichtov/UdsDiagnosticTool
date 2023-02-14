@@ -29,13 +29,16 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         icons.qrc
-        connectcandialog.cpp
-        connectcandialog.h
-        connectcandialog.ui
         sequence.cpp
         sequence.h
         servicemodel.cpp
         servicemodel.h
+        connectcandialog.cpp
+        connectcandialog.h
+        connectcandialog.ui
+        connectionupdater.cpp
+        connectionupdater.h
+        types.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

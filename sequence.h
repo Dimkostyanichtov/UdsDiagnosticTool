@@ -15,6 +15,7 @@ public:
     QVariant  headerData ( int section, Qt ::Orientation orientation, int role = Qt ::DisplayRole ) const;
     Qt ::ItemFlags flags (const QModelIndex  & index) const;
     void addService(serviceModel &newService);
+    void insertService(serviceModel &newService, int index);
     void deleteService(const QModelIndex &index);
     serviceModel& getService(const QModelIndex &index) const;
 

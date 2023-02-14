@@ -1,14 +1,19 @@
 #include "connectcandialog.h"
 #include "ui_connectcandialog.h"
 
-connectcandialog::connectcandialog(QWidget *parent) :
+connectCanDialog::connectCanDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::connectcandialog)
+    ui(new Ui::connectCanDialog)
 {
     ui->setupUi(this);
 }
 
-connectcandialog::~connectcandialog()
+connectCanDialog::~connectCanDialog()
 {
     delete ui;
+}
+
+void connectCanDialog::onUpdate()
+{
+
 }
