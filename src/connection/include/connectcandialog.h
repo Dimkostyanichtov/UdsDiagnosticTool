@@ -8,12 +8,12 @@
 
 namespace Ui {
 class connectCanDialog;
+class connectUpdater;
 }
 
 class connectUpdater : public QThread
 {
     Q_OBJECT
-
     friend class MainWindow;
 
 private:
@@ -33,6 +33,8 @@ signals:
 
 public slots:
     void onStopUpdating();
+private slots:
+    void on_connectPushButton_clicked();
 };
 
 class connectCanDialog : public QDialog
@@ -48,8 +50,12 @@ private:
     QStringList canDrivers { "PEAK", "PEAK_FD", "VSCOM", "SocketCAN" };
     connectUpdater* connectUpdater;
 
+signals:
+    void connectCanBus();
+
 public slots:
     void onUpdate();
+
 private slots:
     void on_canfdCheckBox_stateChanged(int arg1);
 };

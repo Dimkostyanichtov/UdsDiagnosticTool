@@ -65,6 +65,13 @@ void Sequence::deleteService(const QModelIndex &index)
     endRemoveRows();
 }
 
+void Sequence::clearSequence()
+{
+    beginRemoveRows(QModelIndex(), 0, services->count() - 1);
+    services->clear();
+    endRemoveRows();
+}
+
 serviceModel &Sequence::getService(const QModelIndex &index) const
 {
     return (*services)[index.row()];
@@ -81,4 +88,3 @@ QVariant Sequence::getData(int num, int position) const
         return QVariant();
     }
 }
-

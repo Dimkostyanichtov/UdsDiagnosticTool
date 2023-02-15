@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "src/services/include/uds.h"
 #include "sequence.h"
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -38,7 +39,10 @@ private slots:
 
     void on_connectSerialBus_triggered();
 
+    void on_clearServiceListPushButton_clicked();
+
 private:
+    QSettings* settings;
     Ui::MainWindow *ui;
     QMap<QString, udsService*> *services;
     Sequence *sequence;

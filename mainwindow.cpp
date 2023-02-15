@@ -13,12 +13,15 @@ MainWindow::MainWindow(QWidget *parent)
     , services(new QMap<QString, udsService*>)
     , sequence(new Sequence(this))
     , connected(false)
+    , settings(new QSettings("soft", "uds"))
 {
     ui->setupUi(this);
     ui->menubar->hide();
-    ui->serviceTableView->horizontalHeader()->sectionResizeMode(QHeaderView::ResizeMode::ResizeToContents);
+    ui->serviceTableView->horizontalHeader()->sectionResizeMode(QHeaderView::ResizeMode::Stretch);
     ui->serviceTableView->horizontalHeader()->setFont(QFont("Calibri", 14));
     ui->serviceTableView->setModel(sequence);
+
+    ui->restartSpinBox->setValue(settings->value("test").value<int>());
 
     QString DiagnosticSessionControl = enumToString(service_types::DiagnosticSessionControl);
     QString CommunicationControl = enumToString(service_types::CommunicationControl);
@@ -60,6 +63,7 @@ QList<QWidget *> *MainWindow::getCurrentWidgets(QString name)
 void MainWindow::on_exit_triggered()
 {
     delete services;
+    settings->setValue("test", ui->restartSpinBox->value());
     close();
 }
 
@@ -84,6 +88,8 @@ void MainWindow::on_run_triggered()
 {
     for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
             widget->setEnabled(false);
+
+    //TODO: processing
 
     for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
             widget->setEnabled(true);
@@ -127,5 +133,10 @@ void MainWindow::on_connectSerialBus_triggered()
         ui->connectSerialBus->setIcon(QIcon(":/icons/disconnect.png"));
         setConnect(true);
     }
-
 }
+
+void MainWindow::on_clearServiceListPushButton_clicked()
+{
+    sequence->clearSequence();
+}
+
