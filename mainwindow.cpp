@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
     , services(new QMap<QString, udsService*>)
     , sequence(new Sequence(this))
+    , connected(false)
 {
     ui->setupUi(this);
     ui->menubar->hide();
@@ -40,14 +41,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::setConnected(bool connected)
+void MainWindow::setConnect(bool connect)
 {
-
+    connected = connect;
 }
 
-bool MainWindow::connected() const
+bool MainWindow::connect() const
 {
-    return true;
+    return connected;
 }
 
 QList<QWidget *> *MainWindow::getCurrentWidgets(QString name)
@@ -99,7 +100,6 @@ void MainWindow::on_addServicePushButton_clicked()
         sequence->addService(service);
 }
 
-
 void MainWindow::on_deleteServicePushButton_clicked()
 {
    QModelIndex index = ui->serviceTableView->selectionModel()->currentIndex();
@@ -115,11 +115,18 @@ void MainWindow::on_deleteServicePushButton_clicked()
    }
 }
 
-
 void MainWindow::on_connectSerialBus_triggered()
 {
-    connectCanDialog* candialog = new connectCanDialog();
-    candialog->setWindowFlags(candialog->windowFlags() & (~Qt::WindowContextHelpButtonHint));
-    candialog->show();
-}
+    if (connect()) {
+        ui->connectSerialBus->setIcon(QIcon(":/icons/connect.png"));
+        setConnect(false);
+    } else {
+        connectCanDialog* candialog = new connectCanDialog();
+        candialog->setWindowFlags(candialog->windowFlags() & (~Qt::WindowContextHelpButtonHint));
+        candialog->show();
 
+        ui->connectSerialBus->setIcon(QIcon(":/icons/disconnect.png"));
+        setConnect(true);
+    }
+
+}

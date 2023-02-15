@@ -12,14 +12,14 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    Q_PROPERTY(bool connected READ connected WRITE setConnected)
+    Q_PROPERTY(bool connect READ connect WRITE setConnect)
 
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void setConnected(bool connected);
-    bool connected() const;
+    void setConnect(bool connect);
+    bool connect() const;
 
     QList<QWidget*>* getCurrentWidgets(QString);
 
@@ -42,6 +42,7 @@ private:
     Ui::MainWindow *ui;
     QMap<QString, udsService*> *services;
     Sequence *sequence;
+    bool connected;
 };
 
 #endif // MAINWINDOW_H
