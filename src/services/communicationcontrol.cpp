@@ -2,6 +2,8 @@
 
 communicationControl::communicationControl() {}
 
+communicationControl::~communicationControl() {}
+
 QList<int>* communicationControl::request()
 {
     QList<int>* request = new QList<int>();

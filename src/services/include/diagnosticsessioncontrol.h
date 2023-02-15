@@ -12,7 +12,7 @@ private:
 
 public:
     diagnosticSessionControl();
-    virtual ~diagnosticSessionControl() {}
+    virtual ~diagnosticSessionControl();
     QList<int> *request() override;
     QList<QWidget*>* getWidgets() override;
 

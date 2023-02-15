@@ -2,6 +2,8 @@
 
 diagnosticSessionControl::diagnosticSessionControl() {}
 
+diagnosticSessionControl::~diagnosticSessionControl() {}
+
 QList<int>* diagnosticSessionControl::request()
 {
     QList<int>* request = new QList<int>();

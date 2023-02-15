@@ -3,7 +3,7 @@
 #include <QUrl>
 #include <QDesktopServices>
 
-#include "connectcandialog.h"
+#include "src/connection/include/connectcandialog.h"
 
 using service_types = Enums::ServiceTypes;
 
@@ -122,7 +122,6 @@ void MainWindow::on_connectSerialBus_triggered()
         setConnect(false);
     } else {
         connectCanDialog* candialog = new connectCanDialog();
-        candialog->setWindowFlags(candialog->windowFlags() & (~Qt::WindowContextHelpButtonHint));
         candialog->show();
 
         ui->connectSerialBus->setIcon(QIcon(":/icons/disconnect.png"));

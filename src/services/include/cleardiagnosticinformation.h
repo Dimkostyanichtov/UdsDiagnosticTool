@@ -15,8 +15,8 @@ private:
     clearDiagnosticInformation& operator=(clearDiagnosticInformation&&);
 
 public:
-    clearDiagnosticInformation(QObject *parent = nullptr);
-    virtual ~clearDiagnosticInformation() {}
+    clearDiagnosticInformation();
+    virtual ~clearDiagnosticInformation();
     QList<int> *request() override;
     QList<QWidget*>* getWidgets() override;
 

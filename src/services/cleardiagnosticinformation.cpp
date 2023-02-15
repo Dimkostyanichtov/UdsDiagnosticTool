@@ -1,6 +1,8 @@
 #include "include/cleardiagnosticinformation.h"
 
-clearDiagnosticInformation::clearDiagnosticInformation(QObject *parent) {}
+clearDiagnosticInformation::clearDiagnosticInformation() {}
+
+clearDiagnosticInformation::~clearDiagnosticInformation() {}
 
 QList<int> *clearDiagnosticInformation::request()
 {

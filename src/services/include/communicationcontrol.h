@@ -12,7 +12,7 @@ private:
 
 public:
     communicationControl();
-    virtual ~communicationControl() {}
+    virtual ~communicationControl();
     QList<int> *request() override;
     QList<QWidget*>* getWidgets() override;
 

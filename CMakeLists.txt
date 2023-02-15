@@ -20,6 +20,7 @@ file(GLOB cmd
     "src/*"
     "src/services/*"
     "src/services/include/*"
+    "src/connection/*"
     "src/connection/include/*"
 )
 
@@ -28,16 +29,12 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
+        connectcandialog.ui
         icons.qrc
         sequence.cpp
         sequence.h
         servicemodel.cpp
         servicemodel.h
-        connectcandialog.cpp
-        connectcandialog.h
-        connectcandialog.ui
-        connectionupdater.cpp
-        connectionupdater.h
         types.h
 )
 
