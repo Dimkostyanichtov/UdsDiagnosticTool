@@ -1,8 +1,6 @@
 #include "include/devicereader.h"
-
-#include <QCanBus>
-#include <PCANBasic.h>
 #include "../../types.h"
+#include "PCANBasic.h"
 
 deviceReader::deviceReader() {}
 
@@ -31,7 +29,19 @@ QStringList deviceReader::getAvailableDevices(QString driver)
     }
     else if (driver == "SocketCAN")
     {
-
+        QString errorString1;
+        QStringList result;
+    #ifdef Q_OS_WIN
+        QString plugins = "peakcan";
+    #endif
+    #ifdef Q_OS_LINUX
+        QString plugins = "socketcan";
+    #endif
+        foreach(const QCanBusDeviceInfo info, QCanBus::instance()->availableDevices(plugins, &errorString1))
+        {
+            if (errorString1.isEmpty()) result.append(info.name());
+        }
+        return result;
     }
 
     return result;
@@ -39,7 +49,19 @@ QStringList deviceReader::getAvailableDevices(QString driver)
 
 int deviceReader::connectDevice(QString dev)
 {
-    return -1;
+    QString errorString;
+    if(device){
+        device->disconnectDevice();
+        delete device;
+    }
+#ifdef Q_OS_WIN
+    device = QCanBus::instance()->createDevice("peakcan", dev, &errorString);
+#endif
+#ifdef Q_OS_LINUX
+    device = QCanBus::instance()->createDevice("socketcan", dev, &errorString);
+#endif
+    if (!device || !device->connectDevice()) return -1;
+    return 0;
 }
 
 int deviceReader::connectDevice(QString adress, ushort port)
@@ -59,4 +81,11 @@ void deviceReader::disconnectDevice()
 {
     if (pcanDevice != 0)
         CAN_Uninitialize(pcanDevice);
+    if(device)
+        disconnect(device, &QCanBusDevice::framesReceived, this, &deviceReader::sendFramesToParser);
+}
+
+void deviceReader::sendFramesToParser()
+{
+
 }

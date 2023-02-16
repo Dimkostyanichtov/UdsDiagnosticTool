@@ -12,9 +12,9 @@ void connectionUpdater::run()
     emit requestUpdateConnections();
     while(continueUpdating) {
         QThread::msleep(timeout);
-        if (deviceCount != (owner->getDevice()->getAvailableDevices(sender->getDriver())).count()) {
-            deviceCount = (owner->getDevice()->getAvailableDevices(sender->getDriver())).count();
+        if (devices != (owner->getDevice()->getAvailableDevices(sender->getDriver()))) {
             emit requestUpdateConnections();
+            devices = (owner->getDevice()->getAvailableDevices(sender->getDriver()));
         }
     }
 }

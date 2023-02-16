@@ -2,6 +2,7 @@
 #define DEVICEREADER_H
 
 #include <QObject>
+#include <QCanBus>
 
 class deviceReader: public QObject
 {
@@ -16,8 +17,12 @@ public:
     int connectDevice(QString dev, QString speed); //Pcan
     void disconnectDevice();
 
+private slots:
+    void sendFramesToParser();
+
 private:
     ushort pcanDevice = 0;
+    QCanBusDevice *device = nullptr;
 
 };
 

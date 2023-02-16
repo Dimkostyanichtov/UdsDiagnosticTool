@@ -16,7 +16,7 @@ private:
     MainWindow *owner;
     bool continueUpdating = true;
     const int timeout = 100;
-    uint deviceCount = 0;
+    QStringList devices;
 
 public:
     connectionUpdater(MainWindow* owner, connectCanDialog* sender);

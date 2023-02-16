@@ -42,6 +42,7 @@ QString connectCanDialog::getDriver()
 
 void connectCanDialog::onUpdate()
 {
+    ui->connectGroupBox->setEnabled(false);
     ui->channelComboBox->clear();
     ui->channelComboBox->addItems(owner->getDevice()->getAvailableDevices(ui->driverComboBox->currentText()));
     if (ui->channelComboBox->count() != 0) {
@@ -50,6 +51,7 @@ void connectCanDialog::onUpdate()
         ui->channelComboBox->addItem("Channels not found");
         ui->connectGroupBox->setEnabled(false);
     }
+    ui->channelComboBox->setCurrentIndex(0);
 }
 
 void connectCanDialog::on_connectPushButton_clicked()
@@ -57,7 +59,7 @@ void connectCanDialog::on_connectPushButton_clicked()
     if ((ui->driverComboBox->currentText() == "PEAK") || (ui->driverComboBox->currentText() == "PEAK_FD"))
     {
         if (owner->getDevice()->connectDevice(ui->channelComboBox->currentText(), ui->bitRateComboBox->currentText()) != PCAN_ERROR_OK) {
-            QMessageBox::warning(this, tr("Внимание!"), tr("Ошибка подключения!"));
+            QMessageBox::warning(this, tr("Attention!"), tr("Connection error!"));
         }
         else
         {

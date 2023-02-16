@@ -420,6 +420,9 @@ border-radius: 5px;</string>
        <property name="currentText">
         <string/>
        </property>
+       <property name="placeholderText">
+        <string>Searching...</string>
+       </property>
       </widget>
      </item>
     </layout>
