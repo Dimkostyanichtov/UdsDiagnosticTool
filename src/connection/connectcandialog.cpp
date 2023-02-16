@@ -2,8 +2,10 @@
 #include "../../ui_connectcandialog.h"
 
 #include "include/connectionupdater.h"
+#include "../../types.h"
 
 #include <QMessageBox>
+#include "PCANBasic.h"
 
 connectCanDialog::connectCanDialog(MainWindow* owner, QWidget *parent)
     : owner(owner)
@@ -11,7 +13,7 @@ connectCanDialog::connectCanDialog(MainWindow* owner, QWidget *parent)
     , ui(new Ui::connectCanDialog)
 {
     ui->setupUi(this);
-    //ui->bitrateComboBox->addItems()
+    ui->bitRateComboBox->addItems(PCanSpeed.keys());
     ui->driverComboBox->addItems(canDrivers);
 
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
@@ -54,12 +56,11 @@ void connectCanDialog::on_connectPushButton_clicked()
 {
     if ((ui->driverComboBox->currentText() == "PEAK") || (ui->driverComboBox->currentText() == "PEAK_FD"))
     {
-        if (false) {//(!device->connectDevice(ui->driverComboBox->currentText(), ui->channelComboBox->currentText(), ui->bitRateComboBox->currentText())) {
-            QMessageBox::warning(this, tr("Внимание!"), tr("Ошибка подключения!"),  QMessageBox::Cancel);
+        if (owner->getDevice()->connectDevice(ui->channelComboBox->currentText(), ui->bitRateComboBox->currentText()) != PCAN_ERROR_OK) {
+            QMessageBox::warning(this, tr("Внимание!"), tr("Ошибка подключения!"));
         }
         else
         {
-            //owner->setDevice(device)
             owner->setConnect(true);
             emit requestStopUpdating();
             close();

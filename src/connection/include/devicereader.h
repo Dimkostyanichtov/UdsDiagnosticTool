@@ -14,9 +14,10 @@ public:
     int connectDevice(QString dev); //QCan
     int connectDevice(QString adress, ushort port); //Server
     int connectDevice(QString dev, QString speed); //Pcan
-    int disconnectDevice();
+    void disconnectDevice();
 
 private:
+    ushort pcanDevice = 0;
 
 };
 

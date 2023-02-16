@@ -1,6 +1,8 @@
 #include "include/devicereader.h"
 
 #include <QCanBus>
+#include <PCANBasic.h>
+#include "../../types.h"
 
 deviceReader::deviceReader() {}
 
@@ -12,15 +14,16 @@ QStringList deviceReader::getAvailableDevices(QString driver)
 
     if ((driver == "PEAK") || (driver == "PEAK_FD"))
     {
-        QString errorString1;
-    #ifdef Q_OS_WIN
-        QString plugins = "peakcan";
-    #endif
-    #ifdef Q_OS_LINUX
-        QString plugins = "socketcan";
-    #endif
-        foreach(const QCanBusDeviceInfo info, QCanBus::instance()->availableDevices(plugins, &errorString1))
-            if (errorString1.isEmpty()) result.append(info.name());
+        int iBuffer;
+        TPCANStatus stsResult;
+        QMap<QString,ushort> pcan = PCanUsb;
+        foreach (int value, pcan){
+            stsResult = CAN_GetValue(value, PCAN_CHANNEL_CONDITION, (void*)&iBuffer, sizeof(iBuffer));
+            if (((stsResult) == PCAN_ERROR_OK) && ((iBuffer & PCAN_CHANNEL_AVAILABLE) == PCAN_CHANNEL_AVAILABLE)) {
+                result.append(pcan.key(value));
+            }
+        }
+        return result;
     }
     else if (driver == "VSCOM")
     {
@@ -46,10 +49,14 @@ int deviceReader::connectDevice(QString adress, ushort port)
 
 int deviceReader::connectDevice(QString dev, QString speed)
 {
-    return -1;
+    TPCANStatus result;
+    pcanDevice = PCanUsb.value(dev);
+    result = CAN_Initialize(pcanDevice, PCanSpeed.value(speed), 0, 0x100, 0x3);
+    return result;
 }
 
-int deviceReader::disconnectDevice()
+void deviceReader::disconnectDevice()
 {
-    return -1;
+    if (pcanDevice != 0)
+        CAN_Uninitialize(pcanDevice);
 }

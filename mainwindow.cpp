@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     , sequence(new Sequence(this))
     , connected(false)
     , settings(new QSettings("mysoft", "udsdiagnostictool"))
-    , device(nullptr)
+    , device(new deviceReader)
 {
     ui->setupUi(this);
     ui->menubar->hide();
