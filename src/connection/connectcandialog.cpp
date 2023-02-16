@@ -1,7 +1,7 @@
 #include "include/connectcandialog.h"
 #include "../../ui_connectcandialog.h"
 
-#include <QMessageBox>
+#include "include/connectionupdater.h"
 
 connectCanDialog::connectCanDialog(QWidget *parent) :
     QDialog(parent),
@@ -14,9 +14,12 @@ connectCanDialog::connectCanDialog(QWidget *parent) :
     setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
-    connectUpdater = new ::connectUpdater(ui);
-    connect(connectUpdater, SIGNAL(requestUpdateConnections()), this, SLOT(onUpdate()), Qt::QueuedConnection);
-    connectUpdater->start();
+    ui->txidLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9a-fA-F]{0,6}")));
+    ui->rxidLineEdit->setValidator(new QRegExpValidator(QRegExp("[0-9a-fA-F]{0,6}")));
+
+    connectionUpdater* updater = new connectionUpdater(this);
+    connect(updater, &connectionUpdater::requestUpdateConnections, this, &connectCanDialog::onUpdate, Qt::QueuedConnection);
+    updater->start();
 }
 
 connectCanDialog::~connectCanDialog()
@@ -34,7 +37,7 @@ void connectCanDialog::onUpdate()
             else return;
         }
     } else {
-        ui->channelComboBox->addItem("Каналы не найдены");
+        ui->channelComboBox->addItem("Channels not found");
         for (QWidget *widget : ui->connectGroupBox->findChildren<QWidget*>()) {
             if (widget->isEnabled()) widget->setEnabled(false);
             else return;
@@ -42,36 +45,7 @@ void connectCanDialog::onUpdate()
     }
 }
 
-void connectCanDialog::on_canfdCheckBox_stateChanged(int arg1)
-{
-    if (arg1 == 2)
-        ui->canfdGroupBox->setEnabled(true);
-    else
-        ui->canfdGroupBox->setEnabled(false);
-}
-
-connectUpdater::connectUpdater(Ui::connectCanDialog *sender) : sender(sender) {}
-
-connectUpdater::~connectUpdater() {}
-
-void connectUpdater::run()
-{
-    emit requestUpdateConnections();
-    while(continueUpdating) {
-        QThread::msleep(timeout);
-        //if (deviceCount != (owner->getDevice()->getAvailableDevices(sender->driverComboBox->currentText())).count()) {
-        //    deviceCount = (owner->getDevice()->getAvailableDevices(sender->driverComboBox->currentText())).count();
-        //    emit requestUpdateConnections();
-        //}
-    }
-}
-
-void connectUpdater::onStopUpdating()
-{
-    continueUpdating = false;
-}
-
-void connectUpdater::on_connectPushButton_clicked()
+void connectCanDialog::on_connectPushButton_clicked()
 {
     //ConnectSerialBus* serialDevice = owner->getDevice();
     //if (!serialDevice->connectDevice(ui->driverComboBox->currentText(), ui->chanComboBox->currentText(), ui->bitRateComboBox->currentText())) {
@@ -84,3 +58,13 @@ void connectUpdater::on_connectPushButton_clicked()
     //    close();
     //}
 }
+
+
+void connectCanDialog::on_checkBox_stateChanged(int arg1)
+{
+    if (arg1 == 2)
+        ui->canfdGroupBox->setEnabled(true);
+    else
+        ui->canfdGroupBox->setEnabled(false);
+}
+

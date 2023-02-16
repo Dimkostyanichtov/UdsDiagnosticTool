@@ -13,15 +13,14 @@ MainWindow::MainWindow(QWidget *parent)
     , services(new QMap<QString, udsService*>)
     , sequence(new Sequence(this))
     , connected(false)
-    , settings(new QSettings("soft", "uds"))
+    , settings(new QSettings("mysoft", "udsdiagnostictool"))
 {
     ui->setupUi(this);
     ui->menubar->hide();
-    ui->serviceTableView->horizontalHeader()->sectionResizeMode(QHeaderView::ResizeMode::Stretch);
     ui->serviceTableView->horizontalHeader()->setFont(QFont("Calibri", 14));
     ui->serviceTableView->setModel(sequence);
 
-    ui->restartSpinBox->setValue(settings->value("test").value<int>());
+    //ui->restartSpinBox->setValue(settings->value("test").value<int>());
 
     QString DiagnosticSessionControl = enumToString(service_types::DiagnosticSessionControl);
     QString CommunicationControl = enumToString(service_types::CommunicationControl);
@@ -39,8 +38,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->serviceComboBox->addItems(services->keys());
 }
 
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+   QMainWindow::resizeEvent(event);
+   ui->serviceTableView->horizontalHeader()->resizeSection(0, ui->serviceTableView->width()/2);
+}
+
 MainWindow::~MainWindow()
 {
+    //settings->setValue("test", ui->restartSpinBox->value());
     delete ui;
 }
 
@@ -104,6 +110,7 @@ void MainWindow::on_addServicePushButton_clicked()
         sequence->insertService(service, index.row() + 1);
     else
         sequence->addService(service);
+    ui->serviceTableView->verticalHeader()->resizeSections(QHeaderView::ResizeToContents);
 }
 
 void MainWindow::on_deleteServicePushButton_clicked()

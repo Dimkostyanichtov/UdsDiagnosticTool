@@ -27,6 +27,12 @@
    <string notr="true">QMainWindow#MainWindow { background-color:  qlineargradient(spread:pad, x1:1, y1:1, x2:0.177, y2:1, stop:0 rgba(61, 169, 226, 255), stop:0.494318 rgba(255, 255, 255, 255)) }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
     <property name="bottomMargin">
      <number>3</number>
@@ -58,7 +64,7 @@
              </font>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <widget class="QWidget" name="serviceOptionsTab">
              <attribute name="title">
@@ -260,18 +266,19 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QComboBox" name="securityTypeComboBox">
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>16777215</height>
-                    </size>
-                   </property>
+                  <widget class="QPushButton" name="securityPushButton">
                    <property name="font">
                     <font>
                      <family>Calibri</family>
                      <pointsize>11</pointsize>
                     </font>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="icons.qrc">
+                     <normaloff>:/icons/open.jpg</normaloff>:/icons/open.jpg</iconset>
                    </property>
                   </widget>
                  </item>

@@ -19,6 +19,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void resizeEvent(QResizeEvent* event);
+
     void setConnect(bool connect);
     bool connect() const;
 

@@ -29,8 +29,8 @@ set(PROJECT_SOURCES
         mainwindow.cpp
         mainwindow.h
         mainwindow.ui
-        connectcandialog.ui
         icons.qrc
+        connectcandialog.ui
         sequence.cpp
         sequence.h
         servicemodel.cpp

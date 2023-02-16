@@ -18,6 +18,8 @@ QVariant Sequence::data(const QModelIndex &index, int role) const
 {
     if (index.isValid() && role == Qt::DisplayRole)
         return getData(index.row(), index.column());
+    else if (role == Qt::TextAlignmentRole)
+        return Qt::AlignCenter;
     return QVariant();
 }
 

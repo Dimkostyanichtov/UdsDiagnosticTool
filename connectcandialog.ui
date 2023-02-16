@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>370</width>
-    <height>430</height>
+    <width>410</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,7 +26,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>CAN-bus connection</string>
+   <string>Connect CAN-bus</string>
   </property>
   <property name="windowIcon">
    <iconset resource="icons.qrc">
@@ -40,9 +40,15 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>341</width>
-     <height>371</height>
+     <width>381</width>
+     <height>291</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Calibri</family>
+     <pointsize>11</pointsize>
+    </font>
    </property>
    <property name="title">
     <string/>
@@ -50,11 +56,11 @@
    <property name="flat">
     <bool>true</bool>
    </property>
-   <widget class="QCheckBox" name="canfdCheckBox">
+   <widget class="QCheckBox" name="checkBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>190</y>
+      <x>0</x>
+      <y>140</y>
       <width>76</width>
       <height>20</height>
      </rect>
@@ -75,30 +81,36 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>220</y>
-      <width>331</width>
-      <height>101</height>
+      <x>0</x>
+      <y>160</y>
+      <width>381</width>
+      <height>71</height>
      </rect>
     </property>
     <property name="title">
      <string/>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>105</width>
-       <height>24</height>
+       <x>10</x>
+       <y>10</y>
+       <width>111</width>
+       <height>22</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="prescalerHorizontalLayout">
       <item>
        <widget class="QLabel" name="prescalerLabel">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>60</width>
+          <width>70</width>
           <height>16777215</height>
          </size>
         </property>
@@ -115,6 +127,12 @@
       </item>
       <item>
        <widget class="QSpinBox" name="prescalerSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>40</width>
@@ -131,68 +149,27 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>150</x>
-       <y>20</y>
-       <width>161</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <layout class="QHBoxLayout" name="sjwHorizontalLayout">
-      <item>
-       <widget class="QLabel" name="sjwLabel">
-        <property name="maximumSize">
-         <size>
-          <width>110</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Calibri</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Sync. Junp Width:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QSpinBox" name="sjwSpinBox">
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Calibri</family>
-          <pointsize>11</pointsize>
-         </font>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="layoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>20</x>
-       <y>60</y>
-       <width>82</width>
-       <height>24</height>
+       <x>10</x>
+       <y>40</y>
+       <width>111</width>
+       <height>22</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="tseg1HorizontalLayout">
       <item>
        <widget class="QLabel" name="tseg1Label">
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>40</width>
+          <width>70</width>
           <height>16777215</height>
          </size>
         </property>
@@ -209,6 +186,12 @@
       </item>
       <item>
        <widget class="QSpinBox" name="tseg1SpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>40</width>
@@ -225,22 +208,81 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
-       <x>150</x>
-       <y>60</y>
-       <width>91</width>
-       <height>24</height>
+       <x>140</x>
+       <y>10</y>
+       <width>161</width>
+       <height>22</height>
       </rect>
      </property>
-     <layout class="QHBoxLayout" name="tseg2HorizontalLayout">
+     <layout class="QHBoxLayout" name="sjwhHorizontalLayout">
       <item>
-       <widget class="QLabel" name="tseg2Label">
+       <widget class="QLabel" name="sjwLabel">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Calibri</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Sync. Jump Width:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="sjwSpinBox">
+        <property name="minimumSize">
+         <size>
+          <width>40</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
           <width>40</width>
           <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Calibri</family>
+          <pointsize>11</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>40</y>
+       <width>155</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="tseg2Label">
+        <property name="minimumSize">
+         <size>
+          <width>110</width>
+          <height>0</height>
          </size>
         </property>
         <property name="font">
@@ -255,13 +297,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QSpinBox" name="tseg2SpinBox">
-        <property name="maximumSize">
-         <size>
-          <width>40</width>
-          <height>16777215</height>
-         </size>
-        </property>
+       <widget class="QSpinBox" name="spinBox">
         <property name="font">
          <font>
           <family>Calibri</family>
@@ -276,13 +312,13 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>-1</x>
-      <y>330</y>
-      <width>341</width>
-      <height>42</height>
+      <x>0</x>
+      <y>240</y>
+      <width>381</width>
+      <height>51</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="connectHorizontalLayout">
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
@@ -300,8 +336,8 @@
       <widget class="QPushButton" name="connectPushButton">
        <property name="minimumSize">
         <size>
-         <width>80</width>
-         <height>40</height>
+         <width>90</width>
+         <height>50</height>
         </size>
        </property>
        <property name="font">
@@ -335,18 +371,24 @@ border-radius: 5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>0</x>
       <y>10</y>
-      <width>271</width>
+      <width>261</width>
       <height>26</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="channelHorizontalLayout">
      <item>
       <widget class="QLabel" name="channelLabel">
+       <property name="minimumSize">
+        <size>
+         <width>110</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="maximumSize">
         <size>
          <width>110</width>
@@ -376,21 +418,27 @@ border-radius: 5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>91</width>
+      <x>0</x>
+      <y>40</y>
+      <width>111</width>
       <height>26</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="txidHorizontalLayout">
      <item>
       <widget class="QLabel" name="txidLabel">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>40</width>
          <height>16777215</height>
         </size>
        </property>
@@ -407,37 +455,46 @@ border-radius: 5px;</string>
      </item>
      <item>
       <widget class="QLineEdit" name="txidLineEdit">
-       <property name="maximumSize">
-        <size>
-         <width>50</width>
-         <height>16777215</height>
-        </size>
-       </property>
        <property name="font">
         <font>
          <family>Calibri</family>
          <pointsize>11</pointsize>
         </font>
        </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string>FF</string>
+       </property>
+       <property name="maxLength">
+        <number>6</number>
+       </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>93</width>
+      <x>0</x>
+      <y>70</y>
+      <width>111</width>
       <height>26</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="rxidHorizontalLayout">
      <item>
       <widget class="QLabel" name="rxidLabel">
+       <property name="minimumSize">
+        <size>
+         <width>40</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>40</width>
          <height>16777215</height>
         </size>
        </property>
@@ -454,6 +511,40 @@ border-radius: 5px;</string>
      </item>
      <item>
       <widget class="QLineEdit" name="rxidLineEdit">
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>FF</string>
+       </property>
+       <property name="maxLength">
+        <number>6</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>100</y>
+      <width>161</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="bitrateHorizontalLayout">
+     <item>
+      <widget class="QLabel" name="bitrateLabel">
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="maximumSize">
         <size>
          <width>50</width>
@@ -466,58 +557,35 @@ border-radius: 5px;</string>
          <pointsize>11</pointsize>
         </font>
        </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>140</y>
-      <width>191</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="bitrateHorizontalLayout">
-     <item>
-      <widget class="QLabel" name="bitrateLabel">
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
        <property name="text">
-        <string>Bit Rate:</string>
+        <string>Bit rate:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="bitrateComboBox">
-       <property name="font">
-        <font>
-         <family>Calibri</family>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-      </widget>
+      <widget class="QComboBox" name="bitrateComboBox"/>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>231</width>
+     <width>191</width>
      <height>26</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="driverHorizontalLayout">
     <item>
      <widget class="QLabel" name="driverLabel">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
         <width>80</width>
