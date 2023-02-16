@@ -10,10 +10,11 @@ class deviceReader: public QObject
 public:
     deviceReader();
     virtual ~deviceReader();
-    static QStringList getAvailableDevice() {return QStringList();};
-    virtual int setDevice(QString) {return -1;};
-    virtual int setDevice(QString, ushort) {return -1;};
-    virtual int setDevice(QString, QString) {return -1;};
+    static QStringList getAvailableDevices(QString driver);
+    int connectDevice(QString dev); //QCan
+    int connectDevice(QString adress, ushort port); //Server
+    int connectDevice(QString dev, QString speed); //Pcan
+    int disconnectDevice();
 
 private:
 

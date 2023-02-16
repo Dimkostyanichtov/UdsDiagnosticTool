@@ -36,6 +36,9 @@
    <string notr="true">QDialog#connectCanDialog { background-color:  qlineargradient(spread:pad, x1:1, y1:1, x2:0.177, y2:1, stop:0 rgba(61, 169, 226, 255), stop:0.494318 rgba(255, 255, 255, 255)) }</string>
   </property>
   <widget class="QGroupBox" name="connectGroupBox">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -90,13 +93,13 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>10</y>
-       <width>111</width>
-       <height>22</height>
+       <width>118</width>
+       <height>24</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="prescalerHorizontalLayout">
@@ -149,13 +152,13 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
        <y>40</y>
-       <width>111</width>
-       <height>22</height>
+       <width>118</width>
+       <height>24</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="tseg1HorizontalLayout">
@@ -208,13 +211,13 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>140</x>
        <y>10</y>
-       <width>161</width>
-       <height>22</height>
+       <width>168</width>
+       <height>24</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="sjwhHorizontalLayout">
@@ -267,7 +270,7 @@
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>140</x>
@@ -315,7 +318,7 @@
       <x>0</x>
       <y>240</y>
       <width>381</width>
-      <height>51</height>
+      <height>52</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="connectHorizontalLayout">
@@ -371,7 +374,7 @@ border-radius: 5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -414,11 +417,14 @@ border-radius: 5px;</string>
          <pointsize>11</pointsize>
         </font>
        </property>
+       <property name="currentText">
+        <string/>
+       </property>
       </widget>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -474,7 +480,7 @@ border-radius: 5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -527,7 +533,7 @@ border-radius: 5px;</string>
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -536,9 +542,9 @@ border-radius: 5px;</string>
       <height>24</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="bitrateHorizontalLayout">
+    <layout class="QHBoxLayout" name="bitRateHorizontalLayout">
      <item>
-      <widget class="QLabel" name="bitrateLabel">
+      <widget class="QLabel" name="bitRateLabel">
        <property name="minimumSize">
         <size>
          <width>50</width>
@@ -563,12 +569,12 @@ border-radius: 5px;</string>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="bitrateComboBox"/>
+      <widget class="QComboBox" name="bitRateComboBox"/>
      </item>
     </layout>
    </widget>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>

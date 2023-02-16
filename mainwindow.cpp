@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     , sequence(new Sequence(this))
     , connected(false)
     , settings(new QSettings("mysoft", "udsdiagnostictool"))
+    , device(nullptr)
 {
     ui->setupUi(this);
     ui->menubar->hide();
@@ -52,12 +53,26 @@ MainWindow::~MainWindow()
 
 void MainWindow::setConnect(bool connect)
 {
+    if (connect)
+        ui->connectSerialBus->setIcon(QIcon(":/icons/disconnect.png"));
+    else
+        ui->connectSerialBus->setIcon(QIcon(":/icons/connect.png"));
     connected = connect;
 }
 
 bool MainWindow::connect() const
 {
     return connected;
+}
+
+deviceReader *MainWindow::getDevice()
+{
+    return device;
+}
+
+void MainWindow::setDevice(deviceReader *dev)
+{
+    device = dev;
 }
 
 QList<QWidget *> *MainWindow::getCurrentWidgets(QString name)
@@ -131,14 +146,12 @@ void MainWindow::on_deleteServicePushButton_clicked()
 void MainWindow::on_connectSerialBus_triggered()
 {
     if (connect()) {
-        ui->connectSerialBus->setIcon(QIcon(":/icons/connect.png"));
+        device->disconnectDevice();
         setConnect(false);
     } else {
-        connectCanDialog* candialog = new connectCanDialog();
+        connectCanDialog* candialog = new connectCanDialog(this);
         candialog->show();
-
-        ui->connectSerialBus->setIcon(QIcon(":/icons/disconnect.png"));
-        setConnect(true);
+        //setConnect(true);
     }
 }
 
@@ -146,4 +159,3 @@ void MainWindow::on_clearServiceListPushButton_clicked()
 {
     sequence->clearSequence();
 }
-

@@ -12,13 +12,14 @@ class connectionUpdater : public QThread
     friend class MainWindow;
 
 private:
-    connectCanDialog* owner;
+    connectCanDialog *sender;
+    MainWindow *owner;
     bool continueUpdating = true;
     const int timeout = 100;
     uint deviceCount = 0;
 
 public:
-    connectionUpdater(connectCanDialog*);
+    connectionUpdater(MainWindow* owner, connectCanDialog* sender);
     virtual ~connectionUpdater();
 
     void run();

@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "src/services/include/uds.h"
 #include "sequence.h"
+#include "src/connection/include/devicereader.h"
 #include <QSettings>
 
 QT_BEGIN_NAMESPACE
@@ -23,6 +24,9 @@ public:
 
     void setConnect(bool connect);
     bool connect() const;
+
+    deviceReader* getDevice();
+    void setDevice (deviceReader*);
 
     QList<QWidget*>* getCurrentWidgets(QString);
 
@@ -49,6 +53,7 @@ private:
     QMap<QString, udsService*> *services;
     Sequence *sequence;
     bool connected;
+    deviceReader* device;
 };
 
 #endif // MAINWINDOW_H
