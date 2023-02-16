@@ -47,6 +47,8 @@ private slots:
 
     void on_clearServiceListPushButton_clicked();
 
+    void on_logResultsPushButtonLog_clicked();
+
 private:
     QSettings* settings;
     Ui::MainWindow *ui;

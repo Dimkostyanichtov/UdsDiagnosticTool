@@ -36,6 +36,8 @@ set(PROJECT_SOURCES
         servicemodel.cpp
         servicemodel.h
         types.h
+        resultmodel.cpp
+        resultmodel.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

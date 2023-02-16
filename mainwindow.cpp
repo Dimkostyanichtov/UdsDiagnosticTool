@@ -21,7 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->serviceTableView->horizontalHeader()->setFont(QFont("Calibri", 14));
     ui->serviceTableView->setModel(sequence);
 
-    //ui->restartSpinBox->setValue(settings->value("test").value<int>());
+    ui->delaySpinBox->setValue(settings->value("delaySpinBox").value<int>());
+    ui->restartSpinBox->setValue(settings->value("restartSpinBox").value<int>());
 
     QString DiagnosticSessionControl = enumToString(service_types::DiagnosticSessionControl);
     QString CommunicationControl = enumToString(service_types::CommunicationControl);
@@ -47,7 +48,8 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 
 MainWindow::~MainWindow()
 {
-    //settings->setValue("test", ui->restartSpinBox->value());
+    settings->setValue("delaySpinBox", ui->restartSpinBox->value());
+    settings->setValue("restartSpinBox", ui->restartSpinBox->value());
     delete ui;
 }
 
@@ -84,7 +86,8 @@ QList<QWidget *> *MainWindow::getCurrentWidgets(QString name)
 void MainWindow::on_exit_triggered()
 {
     delete services;
-    settings->setValue("test", ui->restartSpinBox->value());
+    settings->setValue("delaySpinBox", ui->restartSpinBox->value());
+    settings->setValue("restartSpinBox", ui->restartSpinBox->value());
     close();
 }
 
@@ -151,7 +154,6 @@ void MainWindow::on_connectSerialBus_triggered()
     } else {
         connectCanDialog* candialog = new connectCanDialog(this);
         candialog->show();
-        //setConnect(true);
     }
 }
 
@@ -159,3 +161,9 @@ void MainWindow::on_clearServiceListPushButton_clicked()
 {
     sequence->clearSequence();
 }
+
+void MainWindow::on_logResultsPushButtonLog_clicked()
+{
+    ui->res
+}
+

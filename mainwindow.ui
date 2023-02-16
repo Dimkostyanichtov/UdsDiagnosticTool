@@ -733,7 +733,7 @@ border-radius: 5px;</string>
            </layout>
           </item>
           <item>
-           <widget class="QListView" name="listView">
+           <widget class="QListView" name="resultsListView">
             <property name="font">
              <font>
               <family>Calibri</family>
