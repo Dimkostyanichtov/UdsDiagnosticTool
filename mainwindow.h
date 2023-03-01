@@ -2,10 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSettings>
+
 #include "src/services/include/uds.h"
 #include "sequence.h"
 #include "src/connection/include/devicereader.h"
-#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

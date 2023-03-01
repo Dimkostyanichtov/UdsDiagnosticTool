@@ -19,6 +19,7 @@ public:
     void deleteService(const QModelIndex &index);
     void clearSequence();
     serviceModel& getService(const QModelIndex &index) const;
+    QList<serviceModel> getModelList();
 
 private:
     QList<serviceModel> *services;

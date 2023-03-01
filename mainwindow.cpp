@@ -2,6 +2,9 @@
 #include "./ui_mainwindow.h"
 #include <QUrl>
 #include <QDesktopServices>
+#include <QtConcurrent/QtConcurrent>
+#include <functional>
+#include <QFuture>
 
 #include "src/connection/include/connectcandialog.h"
 
@@ -110,13 +113,38 @@ void MainWindow::on_linkPushButton_clicked()
 
 void MainWindow::on_run_triggered()
 {
-    for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
-            widget->setEnabled(false);
+    if (sequence->rowCount() != 0) {
+        QFutureWatcher<QString> watcher;
+        QObject::connect(&watcher,  &QFutureWatcher<void>::progressRangeChanged, ui->progressBar, &QProgressBar::setRange);
+        QObject::connect(&watcher, &QFutureWatcher<void>::progressValueChanged,  ui->progressBar, &QProgressBar::setValue);
 
-    //TODO: processing
+        for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
+                widget->setEnabled(false);
+        this->setCursor(Qt::WaitCursor);
 
-    for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
-            widget->setEnabled(true);
+        QVector<QString> current_services;
+
+        foreach (serviceModel model, sequence->getModelList()) {
+            current_services.append(model.getData());
+        }
+
+        std::function<QString(const QString&)> process = [](const QString& model) -> QString {
+            QThread::sleep(1000);
+            return model + "test";
+        };
+
+        watcher.setFuture(QtConcurrent::map(current_services, process));
+
+        for (int i = 0; i < current_services.count(); ++i) {
+            QString test = watcher.resultAt(i);
+        }
+
+        watcher.waitForFinished();
+
+        for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
+                widget->setEnabled(true);
+        this->setCursor(Qt::ArrowCursor);
+    }
 }
 
 void MainWindow::on_addServicePushButton_clicked()
@@ -164,6 +192,6 @@ void MainWindow::on_clearServiceListPushButton_clicked()
 
 void MainWindow::on_logResultsPushButtonLog_clicked()
 {
-    ui->res
+
 }
 

@@ -79,6 +79,11 @@ serviceModel &Sequence::getService(const QModelIndex &index) const
     return (*services)[index.row()];
 }
 
+QList<serviceModel> Sequence::getModelList()
+{
+    return *services;
+}
+
 QVariant Sequence::getData(int num, int position) const
 {
     switch (position) {
