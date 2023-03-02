@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets SerialBus)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets SerialBus)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Concurrent SerialBus)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Concurrent SerialBus)
 find_file(PCAN_LIB PCANBasic.dll PATHS lib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/include)
@@ -63,7 +63,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::SerialBus ${PCAN_LIB})
+target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Concurrent Qt${QT_VERSION_MAJOR}::SerialBus ${PCAN_LIB})
 
 set_target_properties(UdsDiagnosticTool PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

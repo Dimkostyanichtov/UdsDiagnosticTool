@@ -6,6 +6,7 @@
 #include <functional>
 #include <QFuture>
 
+#include "qglobal.h"
 #include "src/connection/include/connectcandialog.h"
 
 using service_types = Enums::ServiceTypes;
@@ -114,12 +115,14 @@ void MainWindow::on_linkPushButton_clicked()
 void MainWindow::on_run_triggered()
 {
     if (sequence->rowCount() != 0) {
-        QFutureWatcher<QString> watcher;
-        QObject::connect(&watcher,  &QFutureWatcher<void>::progressRangeChanged, ui->progressBar, &QProgressBar::setRange);
-        QObject::connect(&watcher, &QFutureWatcher<void>::progressValueChanged,  ui->progressBar, &QProgressBar::setValue);
+        QList<QString> test;
+        QList<QString> test2;
+        QFutureWatcher<void> watcher;
+        //QObject::connect(&watcher,  &QFutureWatcher<void>::progressRangeChanged, ui->progressBar, &QProgressBar::setRange);
+        //QObject::connect(&watcher, &QFutureWatcher<void>::progressValueChanged,  ui->progressBar, &QProgressBar::setValue);
 
         for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
-                widget->setEnabled(false);
+            widget->setEnabled(false);
         this->setCursor(Qt::WaitCursor);
 
         QVector<QString> current_services;
@@ -128,21 +131,29 @@ void MainWindow::on_run_triggered()
             current_services.append(model.getData());
         }
 
-        std::function<QString(const QString&)> process = [](const QString& model) -> QString {
-            QThread::sleep(1000);
-            return model + "test";
+        std::function<void(const QVector<QString>&)> process = [&test](const QVector<QString>& model) {
+            QThread::sleep(5);
+            foreach(QString s, model)
+                test.append(s + "test");
         };
 
-        watcher.setFuture(QtConcurrent::map(current_services, process));
+        QFuture<void> future = QtConcurrent::run(process, current_services);
 
-        for (int i = 0; i < current_services.count(); ++i) {
-            QString test = watcher.resultAt(i);
+        watcher.setFuture(future);
+
+        //test.append(watcher.result());
+
+        while(!watcher.future().isFinished()) {
+            if (!test.empty()) {
+                test2.append(test.first());
+                test.removeFirst();
+            }
         }
 
-        watcher.waitForFinished();
+        //watcher.waitForFinished();
 
         for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
-                widget->setEnabled(true);
+            widget->setEnabled(true);
         this->setCursor(Qt::ArrowCursor);
     }
 }
