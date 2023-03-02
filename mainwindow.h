@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QSettings>
+#include <QtConcurrent/QtConcurrent>
+#include <QFuture>
 
 #include "src/services/include/uds.h"
 #include "sequence.h"
@@ -50,6 +52,8 @@ private slots:
 
     void on_logResultsPushButtonLog_clicked();
 
+    void processFinished();
+
 private:
     QSettings* settings;
     Ui::MainWindow *ui;
@@ -57,6 +61,7 @@ private:
     Sequence *sequence;
     bool connected;
     deviceReader* device;
+    QFutureWatcher<void> watcher;
 };
 
 #endif // MAINWINDOW_H

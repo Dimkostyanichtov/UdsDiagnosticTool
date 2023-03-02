@@ -2,9 +2,8 @@
 #include "./ui_mainwindow.h"
 #include <QUrl>
 #include <QDesktopServices>
-#include <QtConcurrent/QtConcurrent>
 #include <functional>
-#include <QFuture>
+
 
 #include "qglobal.h"
 #include "src/connection/include/connectcandialog.h"
@@ -40,6 +39,10 @@ MainWindow::MainWindow(QWidget *parent)
     services->insert(DiagnosticSessionControl, serviceCreator.create(DiagnosticSessionControl));
     services->insert(CommunicationControl, serviceCreator.create(CommunicationControl));
     services->insert(ClearDiagnosticInformation, serviceCreator.create(ClearDiagnosticInformation));
+
+    QObject::connect(&watcher,  &QFutureWatcher<void>::finished, this, &MainWindow::processFinished);
+    QObject::connect(&watcher,  &QFutureWatcher<void>::progressRangeChanged, ui->progressBar, &QProgressBar::setRange);
+    QObject::connect(&watcher, &QFutureWatcher<void>::progressValueChanged,  ui->progressBar, &QProgressBar::setValue);
 
     ui->serviceComboBox->addItems(services->keys());
 }
@@ -117,9 +120,6 @@ void MainWindow::on_run_triggered()
     if (sequence->rowCount() != 0) {
         QList<QString> test;
         QList<QString> test2;
-        QFutureWatcher<void> watcher;
-        //QObject::connect(&watcher,  &QFutureWatcher<void>::progressRangeChanged, ui->progressBar, &QProgressBar::setRange);
-        //QObject::connect(&watcher, &QFutureWatcher<void>::progressValueChanged,  ui->progressBar, &QProgressBar::setValue);
 
         for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
             widget->setEnabled(false);
@@ -143,18 +143,15 @@ void MainWindow::on_run_triggered()
 
         //test.append(watcher.result());
 
-        while(!watcher.future().isFinished()) {
-            if (!test.empty()) {
-                test2.append(test.first());
-                test.removeFirst();
-            }
-        }
+        //while(!watcher.future().isFinished()) {
+        //    if (!test.empty()) {
+        //        test2.append(test.first());
+        //        test.removeFirst();
+        //    }
+        //}
 
         //watcher.waitForFinished();
 
-        for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
-            widget->setEnabled(true);
-        this->setCursor(Qt::ArrowCursor);
     }
 }
 
@@ -204,5 +201,12 @@ void MainWindow::on_clearServiceListPushButton_clicked()
 void MainWindow::on_logResultsPushButtonLog_clicked()
 {
 
+}
+
+void MainWindow::processFinished()
+{
+    for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
+        widget->setEnabled(true);
+    this->setCursor(Qt::ArrowCursor);
 }
 
