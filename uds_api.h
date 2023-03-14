@@ -3,7 +3,6 @@
 
 //#include "PCAN-UDS_2013.h"
 
-
 class UDS_Api
 {
 public:

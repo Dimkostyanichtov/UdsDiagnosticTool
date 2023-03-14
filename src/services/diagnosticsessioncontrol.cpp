@@ -44,5 +44,6 @@ QList<QWidget *> *diagnosticSessionControl::getWidgets()
     widgets->append(sessionTypeComboBox);
     widgets->append(answerSuppressLabel);
     widgets->append(answerSuppressComboBox);
+
     return widgets;
 }

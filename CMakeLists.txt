@@ -41,6 +41,8 @@ set(PROJECT_SOURCES
         resultmodel.h
         uds_api.cpp
         uds_api.h
+        result.cpp
+        result.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

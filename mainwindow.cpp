@@ -6,10 +6,10 @@
 
 #include <QUrl>
 #include <QDesktopServices>
-#include <functional>
 #include <QJsonObject>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <functional>
 
 using service_types = Enums::ServiceTypes;
 

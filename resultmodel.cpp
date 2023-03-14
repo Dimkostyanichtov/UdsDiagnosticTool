@@ -2,8 +2,8 @@
 
 resultModel::resultModel(QString time, QString name, QString data) :
     timestamp(time)
-    ,serviceName(name)
-    ,answer(data)
+    , serviceName(name)
+    , answer(data)
 {}
 
 resultModel::~resultModel() {}
