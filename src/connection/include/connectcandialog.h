@@ -1,8 +1,9 @@
 #ifndef CONNECTCANDIALOG_H
 #define CONNECTCANDIALOG_H
 
-#include <QDialog>
 #include "../../mainwindow.h"
+
+#include <QDialog>
 
 namespace Ui {
 class connectCanDialog;

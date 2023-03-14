@@ -73,6 +73,17 @@ int deviceReader::connectDevice(QString dev, QString speed)
     return result;
 }
 
+void deviceReader::startReading()
+{
+    if (pcanDevice != 0) {
+        //connect(timer, &QTimer::timeout, this, &PCanReader::sendFramesToParser);
+        //if(timer) timer->start(PERIOD_TIMER);
+    }
+    if(device)
+        connect(device, &QCanBusDevice::framesReceived, this, &deviceReader::sendFramesToParser);
+
+}
+
 void deviceReader::disconnectDevice()
 {
     if (pcanDevice != 0)

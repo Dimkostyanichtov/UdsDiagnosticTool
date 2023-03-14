@@ -12,6 +12,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets Concurrent SerialBus)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets Concurrent SerialBus)
 find_file(PCAN_LIB PCANBasic.dll PATHS lib)
+find_file(PCAN_UDS_LIB PCAN-UDS.dll PATHS lib)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/services)
@@ -38,6 +39,8 @@ set(PROJECT_SOURCES
         types.h
         resultmodel.cpp
         resultmodel.h
+        uds_api.cpp
+        uds_api.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -63,7 +66,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Concurrent Qt${QT_VERSION_MAJOR}::SerialBus ${PCAN_LIB})
+target_link_libraries(UdsDiagnosticTool PRIVATE Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Concurrent Qt${QT_VERSION_MAJOR}::SerialBus ${PCAN_LIB} ${PCAN_UDS_LIB})
 
 set_target_properties(UdsDiagnosticTool PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

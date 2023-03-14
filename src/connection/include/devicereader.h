@@ -15,6 +15,7 @@ public:
     int connectDevice(QString dev); //QCan
     int connectDevice(QString adress, ushort port); //Server
     int connectDevice(QString dev, QString speed); //Pcan
+    void startReading();
     void disconnectDevice();
 
 private slots:

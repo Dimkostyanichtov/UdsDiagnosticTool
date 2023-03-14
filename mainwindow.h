@@ -1,14 +1,14 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "src/services/include/uds.h"
+#include "sequence.h"
+#include "src/connection/include/devicereader.h"
+
 #include <QMainWindow>
 #include <QSettings>
 #include <QtConcurrent/QtConcurrent>
 #include <QFuture>
-
-#include "src/services/include/uds.h"
-#include "sequence.h"
-#include "src/connection/include/devicereader.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

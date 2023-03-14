@@ -1,9 +1,9 @@
 #ifndef SEQUENCE_H
 #define SEQUENCE_H
 
-#include <QAbstractTableModel>
-
 #include "servicemodel.h"
+
+#include <QAbstractTableModel>
 
 class Sequence : public QAbstractTableModel
 {

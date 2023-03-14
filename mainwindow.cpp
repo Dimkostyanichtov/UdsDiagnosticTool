@@ -1,15 +1,15 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+
+#include "qglobal.h"
+#include "src/connection/include/connectcandialog.h"
+
 #include <QUrl>
 #include <QDesktopServices>
 #include <functional>
 #include <QJsonObject>
 #include <QFileDialog>
 #include <QMessageBox>
-
-
-#include "qglobal.h"
-#include "src/connection/include/connectcandialog.h"
 
 using service_types = Enums::ServiceTypes;
 
@@ -127,6 +127,7 @@ void MainWindow::on_linkPushButton_clicked()
 void MainWindow::on_run_triggered()
 {
     if (sequence->rowCount() != 0) {
+        QElapsedTimer timer;
         QList<QString> test;
         QList<QString> test2;
 
@@ -135,6 +136,8 @@ void MainWindow::on_run_triggered()
         this->setCursor(Qt::WaitCursor);
 
         QVector<QString> current_services;
+
+        timer.start();
 
         foreach (serviceModel model, sequence->getModelList()) {
             current_services.append(model.getData());
@@ -261,7 +264,7 @@ void MainWindow::on_openTemplate_triggered()
 
     QFile file(filename);
     if(file.open(QIODevice::ReadOnly)) {
-        ui->serviceTableView->selectionModel()->clear();
+        sequence->clearSequence();
         QByteArray bytes = file.readAll();
         file.close();
 

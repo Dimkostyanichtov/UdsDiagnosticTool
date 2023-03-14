@@ -1,11 +1,26 @@
 #include "resultmodel.h"
 
-resultModel::resultModel()
-{
+resultModel::resultModel(QString time, QString name, QString data) :
+    timestamp(time)
+    ,serviceName(name)
+    ,answer(data)
+{}
 
+resultModel::~resultModel() {}
+
+QString resultModel::getTimestamp()
+{
+    return timestamp;
 }
 
-resultModel::~resultModel()
+QString resultModel::getServiceName()
 {
-
+    return serviceName;
 }
+
+QString resultModel::getAnswer()
+{
+    return answer;
+}
+
+

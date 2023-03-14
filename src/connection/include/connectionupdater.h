@@ -1,10 +1,10 @@
 #ifndef CONNECTIONUPDATER_H
 #define CONNECTIONUPDATER_H
 
-#include <QThread>
-
 #include "../../../mainwindow.h"
 #include "connectcandialog.h"
+
+#include <QThread>
 
 class connectionUpdater : public QThread
 {
