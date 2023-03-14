@@ -17,9 +17,8 @@ QStringList deviceReader::getAvailableDevices(QString driver)
         QMap<QString,ushort> pcan = PCanUsb;
         foreach (int value, pcan){
             stsResult = CAN_GetValue(value, PCAN_CHANNEL_CONDITION, (void*)&iBuffer, sizeof(iBuffer));
-            if (((stsResult) == PCAN_ERROR_OK) && ((iBuffer & PCAN_CHANNEL_AVAILABLE) == PCAN_CHANNEL_AVAILABLE)) {
+            if (((stsResult) == PCAN_ERROR_OK) && ((iBuffer & PCAN_CHANNEL_AVAILABLE) == PCAN_CHANNEL_AVAILABLE))
                 result.append(pcan.key(value));
-            }
         }
         return result;
     }
@@ -38,10 +37,7 @@ QStringList deviceReader::getAvailableDevices(QString driver)
         QString plugins = "socketcan";
     #endif
         foreach(const QCanBusDeviceInfo info, QCanBus::instance()->availableDevices(plugins, &errorString1))
-        {
             if (errorString1.isEmpty()) result.append(info.name());
-        }
-        return result;
     }
 
     return result;

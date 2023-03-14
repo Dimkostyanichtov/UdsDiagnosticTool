@@ -54,6 +54,12 @@ private slots:
 
     void processFinished();
 
+    void on_saveTemplate_triggered();
+
+    void on_openTemplate_triggered();
+
+    void on_cleanResultsPushButton_clicked();
+
 private:
     QSettings* settings;
     Ui::MainWindow *ui;

@@ -67,6 +67,15 @@ void Sequence::deleteService(const QModelIndex &index)
     endRemoveRows();
 }
 
+void Sequence::deleteServices(const QModelIndex &index, const int count)
+{
+    beginRemoveRows(QModelIndex(), index.row(), index.row() + count);
+    for(int i = 0; i < count; ++i)
+        services->removeAt(index.row() + i);
+    endRemoveRows();
+}
+
+
 void Sequence::clearSequence()
 {
     beginRemoveRows(QModelIndex(), 0, services->count() - 1);

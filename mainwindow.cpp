@@ -3,12 +3,21 @@
 #include <QUrl>
 #include <QDesktopServices>
 #include <functional>
+#include <QJsonObject>
+#include <QFileDialog>
+#include <QMessageBox>
 
 
 #include "qglobal.h"
 #include "src/connection/include/connectcandialog.h"
 
 using service_types = Enums::ServiceTypes;
+
+struct SaveFormat {
+    QString serviceName;
+    QString canMessage;
+    SaveFormat(QString name, QString msg) : serviceName(name), canMessage(msg) {}
+};
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -84,7 +93,7 @@ void MainWindow::setDevice(deviceReader *dev)
     device = dev;
 }
 
-QList<QWidget *> *MainWindow::getCurrentWidgets(QString name)
+QList<QWidget*> *MainWindow::getCurrentWidgets(QString name)
 {
     udsService* service = services->value(name);
     return service->getWidgets();
@@ -151,7 +160,6 @@ void MainWindow::on_run_triggered()
         //}
 
         //watcher.waitForFinished();
-
     }
 }
 
@@ -169,17 +177,18 @@ void MainWindow::on_addServicePushButton_clicked()
 
 void MainWindow::on_deleteServicePushButton_clicked()
 {
-   QModelIndex index = ui->serviceTableView->selectionModel()->currentIndex();
-   if (index.isValid())
-       sequence->deleteService(index);
-   else
-   {
-       if (sequence->rowCount() != 0)
-       {
-           index = ui->serviceTableView->selectionModel()->model()->index(ui->serviceTableView->model()->rowCount() - 1, 0);
+    if (sequence->rowCount() != 0)
+    {
+        QList<QModelIndex> indexes;
+        indexes.append(ui->serviceTableView->selectionModel()->selectedIndexes());
+        if (!indexes.empty())
+            sequence->deleteServices(indexes[0], indexes.count() - 1);
+        else
+        {
+           QModelIndex index = ui->serviceTableView->selectionModel()->model()->index(ui->serviceTableView->model()->rowCount() - 1, 0);
            sequence->deleteService(index);
-       }
-   }
+        }
+    }
 }
 
 void MainWindow::on_connectSerialBus_triggered()
@@ -208,5 +217,88 @@ void MainWindow::processFinished()
     for(auto *widget : ui->centralwidget->findChildren<QWidget *>())
         widget->setEnabled(true);
     this->setCursor(Qt::ArrowCursor);
+}
+
+
+void MainWindow::on_saveTemplate_triggered()
+{
+    QString filename;
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setViewMode(QFileDialog::Detail);
+    filename = dialog.getSaveFileName(NULL, "Save file","","*.json");
+
+    QFile file(filename);
+    if(file.open( QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate ))
+    {
+        QJsonDocument document;
+        QJsonObject content;
+        QList<serviceModel> services = sequence->getModelList();
+        for(int i = 0; i < services.count(); ++i) {
+            SaveFormat s = SaveFormat(services[i].getName(), services[i].getData());
+            QJsonObject s_obj;
+            s_obj.insert("name", s.serviceName);
+            s_obj.insert("msg", s.canMessage);
+            content.insert(QString::number(i), s_obj);
+        }
+        document.setObject( content );
+        QByteArray bytes = document.toJson( QJsonDocument::Indented );
+        QTextStream iStream( &file );
+        iStream.setCodec( "utf-8" );
+        iStream << bytes;
+        file.close();
+    }
+}
+
+
+void MainWindow::on_openTemplate_triggered()
+{
+    QString filename;
+    QFileDialog dialog(this);
+    dialog.setFileMode(QFileDialog::AnyFile);
+    dialog.setViewMode(QFileDialog::Detail);
+    filename = dialog.getOpenFileName(NULL, "Open file", "", "*json");
+
+    QFile file(filename);
+    if(file.open(QIODevice::ReadOnly)) {
+        ui->serviceTableView->selectionModel()->clear();
+        QByteArray bytes = file.readAll();
+        file.close();
+
+        QJsonParseError err;
+        QJsonDocument document = QJsonDocument::fromJson(bytes, &err);
+        if (err.error != QJsonParseError::NoError)
+            QMessageBox::warning(this, tr("Attention!"), tr("Wrong format!"));
+        else {
+            if (document.isObject()) {
+                QJsonObject jsonObj = document.object();
+                QStringList services = jsonObj.keys();
+                for (int i = 0; i < services.count(); ++i) {
+                    if (jsonObj.contains(services[i])) {
+                        QJsonObject s_obj = jsonObj.value(services[i]).toObject();
+                        serviceModel service(s_obj.value("name").toString(), s_obj.take("msg").toString());
+                        QModelIndex index = ui->serviceTableView->selectionModel()->currentIndex();
+                        if (index.isValid())
+                            sequence->insertService(service, index.row() + 1);
+                        else
+                            sequence->addService(service);
+                        ui->serviceTableView->verticalHeader()->resizeSections(QHeaderView::ResizeToContents);
+                    }
+                    else {
+                        QMessageBox::warning(this, tr("Attention!"), tr("Wrong format!"));
+                        return;
+                    }
+                }
+            }
+            else
+                QMessageBox::warning(this, tr("Attention!"), tr("Wrong format!"));
+        }
+    }
+}
+
+
+void MainWindow::on_cleanResultsPushButton_clicked()
+{
+    //ui->resultsListView->
 }
 

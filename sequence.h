@@ -17,6 +17,7 @@ public:
     void addService(serviceModel &newService);
     void insertService(serviceModel &newService, int index);
     void deleteService(const QModelIndex &index);
+    void deleteServices(const QModelIndex &index, const int count);
     void clearSequence();
     serviceModel& getService(const QModelIndex &index) const;
     QList<serviceModel> getModelList();
