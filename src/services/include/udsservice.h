@@ -14,6 +14,14 @@
 #include "udsconstants.h"
 #include "enums.h"
 
+
+/*!
+ * \class udsService
+ * \brief The abstract class for services implementation
+ *
+ *  Each service consists of number of widgets which dinamically creates and adds to form when corresponding field selected.
+ *  Each service has request function which returns UDS request bytes string.
+ */
 class udsService : public QObject
 {
     Q_OBJECT

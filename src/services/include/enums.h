@@ -8,6 +8,10 @@ class Enums
 {
     Q_GADGET
 public:
+
+    /*!
+     * \brief The MessageTypes enum includes different UDS message types
+     */
     enum MessageTypes: int
     {
         SINGLE = 0,
@@ -26,6 +30,9 @@ public:
     };
     Q_ENUM(SessionTypes);
 
+    /*!
+     * \brief The ServiceTypes enum includes standard UDS services identificators
+     */
     enum ServiceTypes: int
     {
         DiagnosticSessionControl = 0x10,
@@ -90,7 +97,7 @@ QString enumToString(T val)
         if (str.at(i).isUpper())
             res.append(" " + str.mid(i, 1).toLower());
         else
-            res.append(str.mid(i, 1));
+            res.append(str.midRef(i, 1));
     }
     return res;
 }

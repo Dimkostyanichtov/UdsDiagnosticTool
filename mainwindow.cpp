@@ -114,8 +114,7 @@ void MainWindow::on_serviceComboBox_currentIndexChanged(int index)
         delete item;
     }
     ui->serviceOptionsLabel->setText(ui->serviceComboBox->currentText() + " options");
-    QList<QWidget*>* widgets = getCurrentWidgets(ui->serviceComboBox->currentText());
-    for (QWidget* w : *widgets)
+    for (QWidget* w : *getCurrentWidgets(ui->serviceComboBox->currentText()))
         ui->serviceOptionsLayout->addWidget(w);
 }
 
